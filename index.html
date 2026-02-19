@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicolas Amzallag — Agil'Cadres</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #0F1923; color: #E8EAF0; min-height: 100vh; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #1B2B4B; border-bottom: 2px solid #B8974A;
+    display: flex; align-items: center; gap: 4px; padding: 0 20px; height: 52px;
+    overflow-x: auto;
+  }
+  nav button {
+    background: none; border: none; color: #8A96A8; font-size: 12px; font-weight: 600;
+    padding: 6px 14px; border-radius: 4px; cursor: pointer; white-space: nowrap;
+    letter-spacing: 0.5px; transition: all .2s;
+  }
+  nav button:hover { color: #B8974A; background: rgba(184,151,74,.1); }
+  nav button.active { color: #B8974A; background: rgba(184,151,74,.15); border-bottom: 2px solid #B8974A; }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    position: fixed; top: 52px; left: 0; height: 3px;
+    background: linear-gradient(90deg, #B8974A, #D4AF6A);
+    transition: width .3s ease; z-index: 99;
+  }
+
+  /* MAIN */
+  main { padding-top: 72px; min-height: 100vh; }
+
+  /* SLIDES */
+  .slide { display: none; min-height: calc(100vh - 72px); padding: 40px; animation: fadeIn .3s ease; }
+  .slide.active { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  /* SLIDE 0 — COVER */
+  .slide-cover {
+    display: none; align-items: center; justify-content: center; flex-direction: column;
+    text-align: center; min-height: calc(100vh - 72px);
+    background: radial-gradient(ellipse at 30% 50%, #1B2B4B 0%, #0F1923 70%);
+  }
+  .slide-cover.active { display: flex; }
+  .cover-name { font-size: 52px; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 8px; }
+  .cover-title { font-size: 20px; color: #B8974A; font-weight: 700; margin-bottom: 6px; }
+  .cover-sub { font-size: 15px; color: #6A7A90; margin-bottom: 48px; }
+  .cover-badge {
+    background: rgba(184,151,74,.12); border: 1px solid #B8974A;
+    border-radius: 8px; padding: 16px 32px; font-size: 14px; color: #B8974A; font-weight: 600;
+    margin-bottom: 48px;
+  }
+  .cover-meta { font-size: 13px; color: #5A6070; }
+
+  /* COMPONENTS */
+  .slide-header { margin-bottom: 32px; }
+  .slide-number { font-size: 11px; color: #B8974A; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .slide-title { font-size: 28px; font-weight: 800; color: #fff; }
+  .slide-title span { color: #B8974A; }
+  .slide-desc { font-size: 15px; color: #6A7A90; margin-top: 6px; }
+
+  /* CARDS */
+  .cards { display: grid; gap: 16px; }
+  .cards-2 { grid-template-columns: 1fr 1fr; }
+  .cards-3 { grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: #1A2840; border: 1px solid #243550; border-radius: 12px;
+    padding: 20px; transition: transform .2s, border-color .2s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: #B8974A55; }
+  .card-icon { font-size: 24px; margin-bottom: 10px; }
+  .card-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .card-body { font-size: 13px; color: #8A96A8; line-height: 1.6; }
+  .card.highlight { border-color: #B8974A; background: linear-gradient(135deg, #1E3A5F, #1A2840); }
+  .card.highlight .card-title { color: #B8974A; }
+
+  /* STATUS ROWS */
+  .status-table { background: #1A2840; border-radius: 12px; overflow: hidden; border: 1px solid #243550; }
+  .status-row { display: flex; align-items: center; padding: 14px 20px; border-bottom: 1px solid #243550; }
+  .status-row:last-child { border-bottom: none; }
+  .status-row:nth-child(even) { background: #1E3050; }
+  .status-label { font-size: 12px; font-weight: 700; color: #B8974A; text-transform: uppercase; letter-spacing: 0.5px; width: 180px; flex-shrink: 0; }
+  .status-value { font-size: 14px; color: #C8D0E0; flex: 1; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:2px; background: linear-gradient(180deg, #B8974A, #B8974A44); }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-dot { position:absolute; left:-27px; top:3px; width:14px; height:14px; border-radius:50%; background:#B8974A; border:2px solid #0F1923; }
+  .tl-date { font-size:11px; color:#B8974A; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+  .tl-title { font-size:15px; font-weight:700; color:#fff; margin-bottom:4px; }
+  .tl-body { font-size:13px; color:#8A96A8; line-height:1.6; }
+  .tl-tag { display:inline-block; font-size:11px; background:#1E3A5F; color:#B8974A; border:1px solid #B8974A44; border-radius:20px; padding:2px 10px; margin-top:6px; font-weight:600; }
+
+  /* AXES */
+  .axe {
+    display: flex; gap: 16px; align-items: stretch;
+    background: #1A2840; border-radius: 12px; overflow: hidden;
+    border: 1px solid #243550; margin-bottom: 12px; transition: border-color .2s;
+  }
+  .axe:hover { border-color: #B8974A55; }
+  .axe.priority { border-color: #B8974A; }
+  .axe-num {
+    width: 52px; flex-shrink: 0; display:flex; align-items:center; justify-content:center;
+    font-size: 24px; font-weight: 900; color: #fff;
+  }
+  .axe-content { padding: 16px 16px 16px 0; flex: 1; }
+  .axe-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+  .axe-badge { display:inline-block; font-size:10px; background:#B8974A22; color:#B8974A; border:1px solid #B8974A44; border-radius:20px; padding:2px 10px; margin-bottom:8px; font-weight:700; }
+  .axe-body { font-size: 13px; color: #8A96A8; line-height: 1.6; }
+
+  /* ATTENTES */
+  .check-list { list-style: none; }
+  .check-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 14px 18px; background: #1A2840; border-radius: 10px;
+    margin-bottom: 8px; border: 1px solid #243550; font-size: 14px; color: #C8D0E0;
+    transition: border-color .2s;
+  }
+  .check-list li:hover { border-color: #B8974A44; }
+  .check-list .chk-icon { color: #B8974A; font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* TIMELINE PLANNING */
+  .plan-table { background: #1A2840; border-radius: 12px; overflow: hidden; border: 1px solid #243550; }
+  .plan-row { display: flex; align-items: stretch; border-bottom: 1px solid #243550; }
+  .plan-row:last-child { border-bottom: none; }
+  .plan-period { width: 180px; flex-shrink:0; background: #1B2B4B; display:flex; align-items:center; justify-content:center; padding: 16px; text-align:center; font-size:13px; font-weight:700; color:#B8974A; }
+  .plan-text { flex:1; padding: 16px 20px; font-size:14px; color:#C8D0E0; display:flex; align-items:center; }
+  .plan-row.goal { background: linear-gradient(90deg, #1E3A5F 0%, #1A2840 100%); }
+  .plan-row.goal .plan-text { color: #fff; font-weight: 700; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .tag { font-size: 12px; background: #1E3A5F; color: #C8D8EE; border-radius: 6px; padding: 4px 12px; border: 1px solid #243550; }
+  .tag.gold { background: #B8974A22; color: #B8974A; border-color: #B8974A44; }
+
+  /* PROGRESS SKILL */
+  .skill-bars { display: flex; flex-direction: column; gap: 12px; }
+  .skill-bar-item { }
+  .skill-bar-label { display:flex; justify-content:space-between; font-size:13px; color:#C8D0E0; margin-bottom:5px; }
+  .skill-bar-label span { color:#B8974A; font-weight:700; }
+  .skill-bar-track { height:6px; background:#1E3A5F; border-radius:3px; overflow:hidden; }
+  .skill-bar-fill { height:100%; background:linear-gradient(90deg,#B8974A,#D4AF6A); border-radius:3px; transition: width 1s ease; }
+
+  /* NAV FOOTER */
+  .nav-footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #1B2B4B88; backdrop-filter: blur(10px);
+    border-top: 1px solid #243550;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 24px;
+  }
+  .nav-btn {
+    background: none; border: 1px solid #243550; color: #8A96A8;
+    padding: 8px 20px; border-radius: 6px; cursor: pointer; font-size: 13px;
+    transition: all .2s; font-weight: 600;
+  }
+  .nav-btn:hover { border-color: #B8974A; color: #B8974A; }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .slide-counter { font-size: 13px; color: #5A6070; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <button onclick="goTo(0)" class="active">Accueil</button>
+  <button onclick="goTo(1)">Situation</button>
+  <button onclick="goTo(2)">Actions menées</button>
+  <button onclick="goTo(3)">Projet pro</button>
+  <button onclick="goTo(4)">Atouts</button>
+  <button onclick="goTo(5)">Attentes</button>
+  <button onclick="goTo(6)">Planning</button>
+</nav>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<main>
+
+  <!-- SLIDE 0 — COVER -->
+  <div class="slide slide-cover active" id="slide-0">
+    <div class="cover-name">Nicolas Amzallag</div>
+    <div class="cover-title">Business Developer Senior · IA & Solutions Digitales</div>
+    <div class="cover-sub">Événementiel · Tech · Culture</div>
+    <div class="cover-badge">📋 &nbsp; Note de présentation — Programme Agil'Cadres · Février 2026</div>
+    <div class="cover-meta"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="442a2d272b2825371b25293e2528282523043d252c2b2b6a2236">[email&#160;protected]</a> · 06 42 93 54 80 · Lyon · linkedin.com/in/nicolas-amzallag</div>
+  </div>
+
+  <!-- SLIDE 1 — SITUATION -->
+  <div class="slide" id="slide-1">
+    <div class="slide-header">
+      <div class="slide-number">01 / 06</div>
+      <div class="slide-title">Ma <span>situation</span> actuelle</div>
+      <div class="slide-desc">Une transition choisie, structurée et productive depuis juillet 2025</div>
+    </div>
+    <div class="status-table">
+      <div class="status-row"><div class="status-label">Statut</div><div class="status-value">Demandeur d'emploi — inscrit France Travail depuis juillet 2025</div></div>
+      <div class="status-row"><div class="status-label">Départ</div><div class="status-value">Rupture conventionnelle (YURPLAN, Lyon) — transition choisie et préparée</div></div>
+      <div class="status-row"><div class="status-label">ARE</div><div class="status-value">Indemnités perçues — droits maintenus</div></div>
+      <div class="status-row"><div class="status-label">Formation</div><div class="status-value">Studeria « Incubateur IA » — financée 100% CPF — octobre 2025 → mars 2026</div></div>
+      <div class="status-row"><div class="status-label">Certification</div><div class="status-value">Examen de fin de formation prévu début mars 2026 (LLM, Agents IA, Automatisation)</div></div>
+      <div class="status-row"><div class="status-label">Missions terrain</div><div class="status-value">2 missions non rémunérées réalisées pour maintenir l'activité et tester le positionnement IA</div></div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <div style="font-size:12px;color:#B8974A;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Parcours — 23 ans d'expérience B2B</div>
+      <div class="cards cards-2">
+        <div class="card"><div class="card-icon">💼</div><div class="card-title">YURPLAN · Lyon · 2019–2025</div><div class="card-body">Business Developer SaaS billetterie — prospection, acquisition, fidélisation, IA appliquée</div></div>
+        <div class="card"><div class="card-icon">🚢</div><div class="card-title">BATEAU BELLONA · Lyon · 2014–2019</div><div class="card-body">Responsable Commercial — lancement lieu, B2B événementiel, gestion projets</div></div>
+        <div class="card"><div class="card-icon">🌍</div><div class="card-title">FREELANCE · Ibiza · Genève · Lyon · 2011–2014</div><div class="card-body">Chef de Projet Événementiel — coordination artistique internationale, 15 artistes</div></div>
+        <div class="card"><div class="card-icon">🎟️</div><div class="card-title">CARREFOUR SPECTACLES · Rhône-Alpes · 2002–2011</div><div class="card-body">Responsable Régional — animation réseau 60 points de vente billetterie</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 — ACTIONS -->
+  <div class="slide" id="slide-2">
+    <div class="slide-header">
+      <div class="slide-number">02 / 06</div>
+      <div class="slide-title">Actions <span>menées</span> depuis juillet 2025</div>
+      <div class="slide-desc">7 mois de transition active — pas de temps mort</div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Juillet 2025</div>
+        <div class="tl-title">🔗 Repositionnement & visibilité</div>
+        <div class="tl-body">
+          Refonte complète du profil LinkedIn (titre, accroche, compétences, bannière).<br>
+          Réactivation du réseau professionnel — contacts ciblés, rencontres sectorielles.<br>
+          CV repensé avec double positionnement <strong style="color:#B8974A">Business / IA</strong>.
+        </div>
+        <div class="tl-tag">LinkedIn · Réseau · Personal branding</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#6A9FD8"></div>
+        <div class="tl-date">Septembre 2025</div>
+        <div class="tl-title">🎯 Entretien — ARTY FARTY (Les Nuits Sonores, Le Sucre…)</div>
+        <div class="tl-body">
+          Poste de commercialisation d'espaces événementiels — acteur majeur de la scène culturelle lyonnaise.<br>
+          <strong style="color:#C8D0E0">Entretien abouti</strong>, offre reçue — décision de décliner : rémunération proposée à <strong style="color:#E09090">1 600€ nets</strong>, sans perspective d'évolution ni montée en compétences.<br>
+          <em style="color:#6A7A90">Décision assumée : refus d'un poste sous-évalué pour un profil senior. Confirme l'importance de cibler des structures qui valorisent l'expertise et l'IA.</em>
+        </div>
+        <div class="tl-tag">Marché sondé · Entretien · Offre déclinée</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Octobre 2025 — Formation (en cours)</div>
+        <div class="tl-title">🤖 Formation IA Appliquée — Studeria (financement CPF)</div>
+        <div class="tl-body">
+          Programme complet : LLM (ChatGPT, Claude, Gemini, Notebook LM), Agents IA, automatisation (Make/n8n), création visuelle (Gamma, OpenArt).<br>
+          Usage quotidien intégré dans tous les processus de recherche d'emploi.<br>
+          <strong style="color:#B8974A">Examen de certification → début mars 2026.</strong>
+        </div>
+        <div class="tl-tag">CPF · IA · LLM · Agents · Automatisation</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Octobre 2025</div>
+        <div class="tl-title">🇦🇱 Mission — AXIS EXPERIENCE (Albanie)</div>
+        <div class="tl-body">
+          Consultant Stratégie & Storytelling pour un festival. Définition de la vision de marque, brand book, recommandations stratégiques enrichies par IA.<br>
+          <em style="color:#6A7A90">Mission non rémunérée — droits ARE préservés.</em>
+        </div>
+        <div class="tl-tag">Stratégie · Brand · IA appliquée · International</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Décembre 2025</div>
+        <div class="tl-title">🎵 Mission — UV EVENTS / L'Amour Festival (Lyon)</div>
+        <div class="tl-body">
+          Coordinateur RH sur site : gestion du personnel, élaboration des contrats et fiches de paie.<br>
+          <em style="color:#6A7A90">Mission non rémunérée — droits ARE préservés.</em>
+        </div>
+        <div class="tl-tag">RH · Coordination · Événementiel · Lyon</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#4CAF50"></div>
+        <div class="tl-date">Tout au long</div>
+        <div class="tl-title">📊 Réflexion stratégique & veille</div>
+        <div class="tl-body">
+          Analyse des tendances marché — montée en puissance des profils hybrides Business/IA.<br>
+          Identification de 3 axes de positionnement (voir slide suivante).<br>
+          Veille quotidienne sur l'IA appliquée aux métiers commerciaux.
+        </div>
+        <div class="tl-tag">Stratégie · Veille · Positionnement</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — PROJET PRO -->
+  <div class="slide" id="slide-3">
+    <div class="slide-header">
+      <div class="slide-number">03 / 06</div>
+      <div class="slide-title">Mon <span>projet professionnel</span></div>
+      <div class="slide-desc">3 axes identifiés — 1 priorité claire</div>
+    </div>
+
+    <div class="axe priority">
+      <div class="axe-num" style="background:#B8974A;">1</div>
+      <div class="axe-content">
+        <div class="axe-badge">⭐ PRIORITÉ PRINCIPALE</div>
+        <div class="axe-title">Business Developer augmenté IA</div>
+        <div class="axe-body">CDI en développement commercial (BDR, Account Manager, Sales Manager) dans l'événementiel, la culture ou la tech. Les compétences IA sont intégrées comme levier de productivité et différenciateur fort face aux autres candidats. Secteurs cibles : tech/SaaS, événementiel, culture, musique — avec capacité d'élargissement.</div>
+        <div class="tags">
+          <span class="tag gold">CDI préféré</span>
+          <span class="tag">Événementiel</span><span class="tag">Tech / SaaS</span><span class="tag">Culture</span><span class="tag">B2B</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="axe">
+      <div class="axe-num" style="background:#6A7A90;">2</div>
+      <div class="axe-content">
+        <div class="axe-badge">Option B</div>
+        <div class="axe-title">Rôle hybride Business / IA</div>
+        <div class="axe-body">Revenue Enablement, Sales Ops IA, Growth avec IA. Profils émergents qui combinent expertise commerciale et maîtrise des outils IA pour structurer et scaler les équipes de vente. Principalement dans les scale-ups et entreprises tech. Marché en forte croissance.</div>
+        <div class="tags">
+          <span class="tag">Scale-up</span><span class="tag">Revenue Ops</span><span class="tag">Sales Enablement</span><span class="tag">Growth</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="axe">
+      <div class="axe-num" style="background:#3A4A5A;">3</div>
+      <div class="axe-content">
+        <div class="axe-badge">Option C — secondaire</div>
+        <div class="axe-title">Consultant IA indépendant</div>
+        <div class="axe-body">Accompagnement PME/ETI sur l'intégration IA dans leurs processus commerciaux. Freelance ou portage salarial. Moins prioritaire — envisageable si opportunité structurée post-certification mars 2026.</div>
+        <div class="tags">
+          <span class="tag">Freelance</span><span class="tag">Portage</span><span class="tag">PME/ETI</span><span class="tag">Consulting</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A5F,#1A2840);border:1px solid #B8974A44;border-radius:12px;padding:18px 24px;margin-top:16px;display:flex;align-items:center;gap:16px;">
+      <div style="font-size:24px;">💰</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#B8974A;margin-bottom:4px;">Prétentions salariales</div>
+        <div style="font-size:14px;color:#C8D0E0;">Package cible : <strong style="color:#fff">35 000 – 40 000€ brut annuel</strong> selon poste et responsabilités. Référence : dernier package net 2 500€/mois (YURPLAN). Format préféré : <strong style="color:#B8974A">CDI / salariat</strong> — ouvert portage ou freelance si projet structuré.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — ATOUTS -->
+  <div class="slide" id="slide-4">
+    <div class="slide-header">
+      <div class="slide-number">04 / 06</div>
+      <div class="slide-title">Mes <span>atouts</span> différenciants</div>
+      <div class="slide-desc">Un profil hybride rare sur le marché en 2026</div>
+    </div>
+
+    <div class="cards cards-2" style="margin-bottom:24px;">
+      <div class="card highlight">
+        <div class="card-icon">💼</div>
+        <div class="card-title">23 ans en commerce B2B</div>
+        <div class="card-body">Acquisition, gestion grands comptes, upselling, management réseau de 60 PDV. Secteurs : tech SaaS, événementiel, billetterie, culture.</div>
+      </div>
+      <div class="card highlight">
+        <div class="card-icon">🤖</div>
+        <div class="card-title">Maîtrise IA opérationnelle</div>
+        <div class="card-body">Usage quotidien : ChatGPT, Claude, Gemini, Notebook LM, Gamma, OpenArt. Certification en cours. Appliqué concrètement aux processus de vente.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Profil hybride rare</div>
+        <div class="card-body">Peu de commerciaux seniors maîtrisent réellement l'IA. Ce double positionnement est un avantage concurrentiel fort — recherché par les entreprises en 2026.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Réseau & terrain international</div>
+        <div class="card-body">Anglais bilingue, Espagnol courant. Expériences à Ibiza, Genève, Albanie. Réseau événementiel et culturel bien ancré à Lyon et en France.</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:12px;font-size:12px;color:#B8974A;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Outils maîtrisés</div>
+    <div class="skill-bars">
+      <div class="skill-bar-item">
+        <div class="skill-bar-label">Prospection & CRM (Pipedrive, Sellsy, Lemlist)<span>Expert</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label">IA générative (ChatGPT, Claude, Gemini, Notebook LM)<span>Avancé</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label">Création IA (Gamma, OpenArt, Canva)<span>Avancé</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label">Automatisation (Make, Noota, Airtable)<span>Intermédiaire</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 — ATTENTES -->
+  <div class="slide" id="slide-5">
+    <div class="slide-header">
+      <div class="slide-number">05 / 06</div>
+      <div class="slide-title">Ce que j'attends d'<span>Agil'Cadres</span></div>
+      <div class="slide-desc">Un accompagnement structuré pour accélérer le retour à l'emploi</div>
+    </div>
+
+    <div style="background:#1A2840;border:1px solid #B8974A;border-radius:12px;padding:16px 20px;margin-bottom:20px;">
+      <div style="font-size:13px;color:#B8974A;font-weight:700;margin-bottom:4px;">Agil'Cadres — Comprendre le programme</div>
+      <div style="font-size:13px;color:#8A96A8;line-height:1.7;">Dispositif France Travail dédié aux cadres en transition. Durée 9 mois max. Associe accompagnement individuel personnalisé + dynamique collective (ateliers, groupes de pairs). Opéré par des prestataires spécialisés (LHH, Talent Solutions…). Objectif : retour à l'emploi durable et rapide.</div>
+    </div>
+
+    <ul class="check-list">
+      <li><div class="chk-icon">◆</div><div>Valider et affiner mon positionnement marché — <strong>quel axe prioriser</strong> selon les opportunités réelles à Lyon et en région ?</div></li>
+      <li><div class="chk-icon">◆</div><div>Accéder au <strong>réseau de recruteurs et d'entreprises</strong> partenaires France Travail qui recrutent des profils cadres</div></li>
+      <li><div class="chk-icon">◆</div><div>Structurer ma <strong>stratégie de candidature</strong> — ciblage secteurs/postes, approche réseau, candidatures spontanées</div></li>
+      <li><div class="chk-icon">◆</div><div>Préparer mes <strong>entretiens cadres</strong> — pitch, réponses aux objections, valorisation du profil hybride Business/IA</div></li>
+      <li><div class="chk-icon">◆</div><div>Obtenir des <strong>retours externes</strong> sur mon CV, mon discours et ma proposition de valeur</div></li>
+      <li><div class="chk-icon">◆</div><div>Bénéficier des <strong>ateliers collectifs</strong> : simulations d'entretiens, speed-meeting recruteurs, partage de pratiques entre pairs</div></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 6 — PLANNING -->
+  <div class="slide" id="slide-6">
+    <div class="slide-header">
+      <div class="slide-number">06 / 06</div>
+      <div class="slide-title"><span>Planning</span> — prochaines étapes</div>
+      <div class="slide-desc">Une feuille de route claire vers la prise de poste</div>
+    </div>
+
+    <div class="plan-table" style="margin-bottom:24px;">
+      <div class="plan-row">
+        <div class="plan-period">Fév. →<br>Mars 2026</div>
+        <div class="plan-text">📚 Finalisation formation Studeria + passage examen de certification IA (LLM, Agents, Automatisation)</div>
+      </div>
+      <div class="plan-row">
+        <div class="plan-period">Fév. →<br>Mars 2026</div>
+        <div class="plan-text">🤝 Intégration programme Agil'Cadres — entretien de démarrage, diagnostic, co-construction plan d'action</div>
+      </div>
+      <div class="plan-row">
+        <div class="plan-period">Mars →<br>Avril 2026</div>
+        <div class="plan-text">🚀 Lancement actif des candidatures ciblées — réseau, plateformes, candidatures spontanées. Ateliers collectifs Agil'Cadres.</div>
+      </div>
+      <div class="plan-row">
+        <div class="plan-period">Avril →<br>Mai 2026</div>
+        <div class="plan-text">🎯 Phase d'entretiens — préparation, simulations, retours Agil'Cadres</div>
+      </div>
+      <div class="plan-row goal">
+        <div class="plan-period" style="background:#B8974A22;color:#B8974A;">Objectif<br>Q2 2026</div>
+        <div class="plan-text">✅ Prise de poste — Business Developer Senior avec compétences IA certifiées</div>
+      </div>
+    </div>
+
+    <div class="cards cards-3">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">23</div>
+        <div class="card-title">Ans d'expérience</div>
+        <div class="card-body">Commerce B2B tous secteurs</div>
+      </div>
+      <div class="card" style="text-align:center;border-color:#B8974A44;">
+        <div style="font-size:32px;margin-bottom:8px;">8+</div>
+        <div class="card-title">Outils IA maîtrisés</div>
+        <div class="card-body">Usage quotidien opérationnel</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;">Q2</div>
+        <div class="card-title">Objectif 2026</div>
+        <div class="card-body">Prise de poste ciblée</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:linear-gradient(135deg,#1E3A5F,#1B2B4B);border:1px solid #B8974A;border-radius:12px;padding:20px 24px;text-align:center;">
+      <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;">Profil hybride · Business Senior + IA Certifiée · Lyon</div>
+      <div style="font-size:13px;color:#8A96A8;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb85828884878a98b48a86918a87878a8cab928a838484c58d99">[email&#160;protected]</a> · 06 42 93 54 80 · linkedin.com/in/nicolas-amzallag</div>
+    </div>
+  </div>
+
+</main>
+
+<div class="nav-footer">
+  <button class="nav-btn" id="prevBtn" onclick="prev()" disabled>← Précédent</button>
+  <div class="slide-counter" id="counter">1 / 7</div>
+  <button class="nav-btn" id="nextBtn" onclick="next()">Suivant →</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  let current = 0;
+  const total = 7;
+
+  function goTo(n) {
+    document.querySelectorAll('.slide').forEach((s,i) => {
+      s.classList.toggle('active', i === n);
+    });
+    document.querySelectorAll('nav button').forEach((b,i) => {
+      b.classList.toggle('active', i === n);
+    });
+    current = n;
+    document.getElementById('counter').textContent = (n+1) + ' / ' + total;
+    document.getElementById('prevBtn').disabled = n === 0;
+    document.getElementById('nextBtn').disabled = n === total-1;
+    document.getEl
