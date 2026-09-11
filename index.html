@@ -17,6 +17,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;overflow:hidden;}
 body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--text);cursor:none;}
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);z-index:302;opacity:0.75;pointer-events:none;}
 
 /* ══ CUSTOM CURSOR ══ */
 #cur{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,background 0.2s,opacity 0.2s;mix-blend-mode:screen;}
@@ -39,6 +40,15 @@ body:hover #cur{opacity:1;}
 .aur3{width:400px;height:300px;background:radial-gradient(ellipse,rgba(27,43,75,0.6) 0%,transparent 70%);top:30%;left:40%;animation-duration:20s;}
 @keyframes aurMove{0%{transform:translate(0,0) scale(1);}33%{transform:translate(40px,-30px) scale(1.1);}66%{transform:translate(-20px,40px) scale(0.95);}100%{transform:translate(0,0) scale(1);}}
 
+/* ══ LIGHT BEAMS (esprit bandeau LinkedIn) ══ */
+#beams{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.beam{position:absolute;top:-15%;width:2px;height:140%;background:linear-gradient(180deg,transparent,rgba(201,168,76,0.16),transparent);transform-origin:top center;animation:beamSway 16s ease-in-out infinite;}
+.beam1{left:10%;transform:rotate(-9deg);animation-delay:0s;}
+.beam2{left:34%;width:3px;transform:rotate(-3deg);animation-delay:3s;background:linear-gradient(180deg,transparent,rgba(232,201,106,0.13),transparent);}
+.beam3{left:62%;transform:rotate(6deg);animation-delay:5s;}
+.beam4{left:84%;width:2px;transform:rotate(10deg);animation-delay:1.5s;background:linear-gradient(180deg,transparent,rgba(201,168,76,0.1),transparent);}
+@keyframes beamSway{0%,100%{opacity:0.35;transform:rotate(-9deg) translateX(0);}50%{opacity:0.85;transform:rotate(-6deg) translateX(6px);}}
+
 /* ══ NAV ══ */
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
@@ -47,7 +57,7 @@ body:hover #cur{opacity:1;}
   border-bottom:1px solid var(--border);
   display:flex;align-items:center;padding:0 20px;
 }
-.nlg{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);margin-right:20px;white-space:nowrap;flex-shrink:0;letter-spacing:2px;}
+.nlg{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);margin-right:20px;white-space:nowrap;flex-shrink:0;letter-spacing:2px;text-shadow:0 0 16px rgba(201,168,76,0.35);}
 .ntabs{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none;}
 .ntabs::-webkit-scrollbar{display:none;}
 .ntab{
@@ -184,7 +194,8 @@ body:hover #cur{opacity:1;}
 .c-chip:hover::before{opacity:1;}
 
 /* ══ SECTION HEADER ══ */
-.sh{margin-bottom:28px;}
+.sh{margin-bottom:28px;position:relative;}
+.sh::before{content:'';position:absolute;top:-30px;left:-50px;width:240px;height:200px;background:radial-gradient(ellipse,rgba(201,168,76,0.10) 0%,transparent 70%);pointer-events:none;z-index:-1;}
 .sh-num{
   font-size:11px;color:var(--gold);font-weight:600;letter-spacing:3px;text-transform:uppercase;
   margin-bottom:8px;
@@ -255,34 +266,26 @@ body:hover #cur{opacity:1;}
 .subhead-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(106,159,216,0.5),transparent);}
 .subhead-lbl{font-size:11px;font-weight:700;color:#6A9FD8;text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;}
 
-/* ══ AXES ══ */
-.axe{
-  display:flex;align-items:stretch;
-  background:var(--card);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;margin-bottom:12px;
-  position:relative;
+/* ══ PILLARS ══ */
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:6px;}
+.pillar{
+  background:var(--card);border:1px solid var(--border);border-radius:18px;
+  padding:28px 22px;text-align:center;position:relative;overflow:hidden;
   transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;
   animation:cardRise 0.6s cubic-bezier(0.4,0,0.2,1) both;
 }
-.axe::after{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(180deg,var(--gold),transparent);
-  opacity:0;transition:opacity 0.3s;
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.6;}
+.pillar:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-6px);box-shadow:0 14px 40px rgba(0,0,0,0.35),0 0 20px rgba(201,168,76,0.1);}
+.pillar:hover .pillar-ring{animation:ringRotate 3s linear infinite;}
+.pillar-ring{
+  width:56px;height:56px;border-radius:50%;margin:0 auto 16px;padding:2px;
+  background:conic-gradient(var(--gold) 0deg,var(--gold2) 120deg,rgba(201,168,76,0.15) 240deg,var(--gold) 360deg);
 }
-.axe:hover{border-color:rgba(201,168,76,0.35);transform:translateX(6px);box-shadow:0 6px 28px rgba(0,0,0,0.3);}
-.axe:hover::after{opacity:1;}
-.axe.star{border-color:rgba(201,168,76,0.55);}
-.axe.star::after{opacity:0.6;}
-.aside{width:50px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;}
-.abody{padding:16px 18px 16px 0;flex:1;}
-.abadge{display:inline-block;font-size:10px;font-weight:700;background:var(--goldl);color:var(--gold);border:1px solid rgba(201,168,76,0.3);border-radius:100px;padding:2px 10px;margin-bottom:7px;letter-spacing:0.5px;}
-.attl{font-size:14px;font-weight:600;color:#fff;margin-bottom:5px;transition:color 0.2s;}
-.axe:hover .attl{color:var(--gold);}
-.adesc{font-size:13px;color:var(--muted);line-height:1.6;}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;}
-.tag{font-size:11px;font-weight:500;background:rgba(27,43,75,0.7);color:#a0b4cc;border:1px solid var(--border);border-radius:5px;padding:3px 9px;transition:background 0.2s,color 0.2s;}
-.axe:hover .tag.g{background:rgba(201,168,76,0.2);}
-.tag.g{background:var(--goldl);color:var(--gold);border-color:rgba(201,168,76,0.3);}
+.pillar-ic{width:100%;height:100%;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;}
+.pillar-ttl{font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3;}
+.pillar-desc{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:16px;}
+.pillar-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.pillar-tag{font-size:10.5px;font-weight:600;background:var(--goldl);color:var(--gold);border:1px solid rgba(201,168,76,0.25);border-radius:100px;padding:3px 11px;}
 
 /* ══ SKILL BARS ══ */
 .sb{margin-bottom:16px;}
@@ -408,8 +411,8 @@ body:hover #cur{opacity:1;}
   .ct{font-size:13px;}.cb{font-size:12px;}
   .tttl{font-size:13px;}.tbody{font-size:12px;}
   .sbt{font-size:11px;flex-direction:column;gap:2px;}
-  .abody{padding:12px 12px 12px 0;}
-  .attl{font-size:13px;}.adesc{font-size:12px;}
+  .pillars{grid-template-columns:1fr;}
+  .pillar{padding:22px 18px;}
   .chks li{font-size:12px;padding:10px 12px;}
   .g2{grid-template-columns:1fr;}
   .cta-btn{font-size:13px;padding:12px 24px;}
@@ -429,14 +432,15 @@ body:hover #cur{opacity:1;}
 <div id="cur2"></div>
 <div id="noise"></div>
 <div id="aurora"><div class="aur aur1"></div><div class="aur aur2"></div><div class="aur aur3"></div></div>
+<div id="beams"><div class="beam beam1"></div><div class="beam beam2"></div><div class="beam beam3"></div><div class="beam beam4"></div></div>
 
 <nav id="nav">
   <div class="nlg">N · A</div>
   <div class="ntabs">
     <button class="ntab" data-n="0">Accueil</button>
-    <button class="ntab" data-n="1">Parcours</button>
-    <button class="ntab" data-n="2">Compétences</button>
-    <button class="ntab" data-n="3">Projet pro</button>
+    <button class="ntab" data-n="1">À propos</button>
+    <button class="ntab" data-n="2">Parcours</button>
+    <button class="ntab" data-n="3">Compétences</button>
     <button class="ntab" data-n="4">IA &amp; Outils</button>
     <button class="ntab" data-n="5">Contact</button>
   </div>
@@ -464,11 +468,55 @@ body:hover #cur{opacity:1;}
   </div>
 </div>
 
-<!-- 1 · PARCOURS -->
+<!-- 1 · À PROPOS -->
 <div class="slide" id="s1">
   <div class="inner">
     <div class="sh">
       <div class="sh-num">01 / 05</div>
+      <div class="sh-title">À <em>propos</em></div>
+      <div class="sh-desc">Business Developer &amp; Partenariats — Événementiel · Culture · SaaS — Disponible Immédiatement</div>
+    </div>
+    <div class="pbanner"><img src="assets/image.png" alt="Bandeau Business Developer &amp; Partenariats — Nicolas Amzallag"></div>
+    <div class="about">
+      <div class="about-lbl">À PROPOS</div>
+      <p>Mon parcours de plus de 20 ans s&apos;est construit autour du développement commercial, de l&apos;événementiel et de la culture, avec un fil conducteur : développer des projets, créer des relations durables et transformer les opportunités en résultats concrets.</p>
+      <p>Au fil de ces expériences, j&apos;ai évolué dans des environnements variés et complémentaires — billetterie et SaaS chez Yurplan, lieux événementiels, festivals, médias et scène culturelle — avec des responsabilités allant de la prospection et du développement de comptes à la fidélisation, aux partenariats et à la coordination de projets.</p>
+      <p>Chez Yurplan, j&apos;ai notamment géré un portefeuille de <strong>500 K€</strong> et accompagné sa croissance de <strong>+20 %</strong> sur mes derniers exercices. Auparavant, j&apos;ai développé depuis zéro le portefeuille B2B d&apos;un lieu événementiel, travaillé sur des projets culturels internationaux et piloté un réseau régional de 60 points de vente.</p>
+      <p>Plus récemment, j&apos;ai complété ce parcours par une certification et une pratique concrète de l&apos;IA appliquée : recherche et analyse, prospection, rédaction et synthèse, création de contenus, préparation de supports, agents et workflows. Je l&apos;utilise comme un levier pour gagner en efficacité, explorer de nouvelles approches et enrichir ma manière de travailler.</p>
+      <p>Aujourd&apos;hui, je souhaite mettre cette expérience au service d&apos;un nouveau projet, dans un rôle mêlant développement, partenariats et gestion de projets, idéalement dans les univers de l&apos;événementiel, de la culture, du SaaS ou au sein d&apos;un environnement innovant, stimulant et ouvert aux nouveaux usages.</p>
+      <div class="about-foot">
+        <span>📍 Lyon · Mobilité selon les opportunités</span>
+        <span>📩 nicolas_amzallag@yahoo.fr</span>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar" style="animation-delay:0.1s">
+        <div class="pillar-ring"><div class="pillar-ic">🤝</div></div>
+        <div class="pillar-ttl">Développement commercial &amp; partenariats</div>
+        <div class="pillar-desc">Prospection, négociation et développement de portefeuilles B2B, du premier contact à la signature.</div>
+        <div class="pillar-tags"><span class="pillar-tag">Prospection</span><span class="pillar-tag">Négociation</span><span class="pillar-tag">Grands comptes</span></div>
+      </div>
+      <div class="pillar" style="animation-delay:0.2s">
+        <div class="pillar-ring"><div class="pillar-ic">🤖</div></div>
+        <div class="pillar-ttl">IA appliquée aux ventes</div>
+        <div class="pillar-desc">Intégration quotidienne de l&apos;IA générative pour prospecter, analyser et accélérer chaque étape du cycle commercial.</div>
+        <div class="pillar-tags"><span class="pillar-tag">Prospection IA</span><span class="pillar-tag">Analyse</span><span class="pillar-tag">Automatisation</span></div>
+      </div>
+      <div class="pillar" style="animation-delay:0.3s">
+        <div class="pillar-ring"><div class="pillar-ic">🎤</div></div>
+        <div class="pillar-ttl">Événementiel, culture &amp; storytelling</div>
+        <div class="pillar-desc">Direction de projets créatifs, coordination d&apos;équipes et construction d&apos;identités de marque à fort impact.</div>
+        <div class="pillar-tags"><span class="pillar-tag">Gestion de projet</span><span class="pillar-tag">Brand &amp; Storytelling</span><span class="pillar-tag">Direction artistique</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2 · PARCOURS -->
+<div class="slide" id="s2">
+  <div class="inner">
+    <div class="sh">
+      <div class="sh-num">02 / 05</div>
       <div class="sh-title">Mon <em>parcours</em></div>
       <div class="sh-desc">Business Developer confirmé — Événementiel, culture et IA appliquée au service du développement commercial B2B</div>
     </div>
@@ -522,13 +570,12 @@ body:hover #cur{opacity:1;}
   </div>
 </div>
 
-<!-- 2 · COMPÉTENCES -->
-<div class="slide" id="s2">
+<!-- 3 · COMPÉTENCES -->
+<div class="slide" id="s3">
   <div class="inner">
     <div class="sh">
-      <div class="sh-num">02 / 05</div>
+      <div class="sh-num">03 / 05</div>
       <div class="sh-title">Mes <em>compétences</em></div>
-      <div class="sh-desc">Un profil hybride rare — expertise commerciale senior + IA opérationnelle certifiée</div>
     </div>
     <div class="g2 mb20">
       <div class="card gld"><div class="ci">💼</div><div class="ct">Commerce B2B Senior</div><div class="cb">Acquisition, gestion grands comptes, upselling, management réseau. Cycle de vente complet en SaaS, événementiel et culture.</div></div>
@@ -541,57 +588,6 @@ body:hover #cur{opacity:1;}
     <div class="sb"><div class="sbt"><span>IA générative (ChatGPT, Claude, Perplexity, Gemini, NotebookLM)</span><strong>Avancé</strong></div><div class="sbtr"><div class="sbf" data-w="84"></div></div></div>
     <div class="sb"><div class="sbt"><span>Agents IA, workflows &amp; automatisation (+ création de contenu via Gamma)</span><strong>Avancé</strong></div><div class="sbtr"><div class="sbf" data-w="76"></div></div></div>
     <div class="sb"><div class="sbt"><span>Outils collaboratifs &amp; suivi (Airtable, Noota, Slack)</span><strong>Avancé</strong></div><div class="sbtr"><div class="sbf" data-w="72"></div></div></div>
-  </div>
-</div>
-
-<!-- 3 · PROJET PRO -->
-<div class="slide" id="s3">
-  <div class="inner">
-    <div class="sh">
-      <div class="sh-num">03 / 05</div>
-      <div class="sh-title">Mon <em>projet</em> professionnel</div>
-      <div class="sh-desc">Business Developer &amp; Partenariats — Événementiel · Culture · SaaS — Disponible Immédiatement</div>
-    </div>
-    <div class="pbanner"><img src="assets/image.png" alt="Bandeau Business Developer &amp; Partenariats — Nicolas Amzallag"></div>
-    <div class="about">
-      <div class="about-lbl">À PROPOS</div>
-      <p>Mon parcours de plus de 20 ans s&apos;est construit autour du développement commercial, de l&apos;événementiel et de la culture, avec un fil conducteur : développer des projets, créer des relations durables et transformer les opportunités en résultats concrets.</p>
-      <p>Au fil de ces expériences, j&apos;ai évolué dans des environnements variés et complémentaires — billetterie et SaaS chez Yurplan, lieux événementiels, festivals, médias et scène culturelle — avec des responsabilités allant de la prospection et du développement de comptes à la fidélisation, aux partenariats et à la coordination de projets.</p>
-      <p>Chez Yurplan, j&apos;ai notamment géré un portefeuille de <strong>500 K€</strong> et accompagné sa croissance de <strong>+20 %</strong> sur mes derniers exercices. Auparavant, j&apos;ai développé depuis zéro le portefeuille B2B d&apos;un lieu événementiel, travaillé sur des projets culturels internationaux et piloté un réseau régional de 60 points de vente.</p>
-      <p>Plus récemment, j&apos;ai complété ce parcours par une certification et une pratique concrète de l&apos;IA appliquée : recherche et analyse, prospection, rédaction et synthèse, création de contenus, préparation de supports, agents et workflows. Je l&apos;utilise comme un levier pour gagner en efficacité, explorer de nouvelles approches et enrichir ma manière de travailler.</p>
-      <p>Aujourd&apos;hui, je souhaite mettre cette expérience au service d&apos;un nouveau projet, dans un rôle mêlant développement, partenariats et gestion de projets, idéalement dans les univers de l&apos;événementiel, de la culture, du SaaS ou au sein d&apos;un environnement innovant, stimulant et ouvert aux nouveaux usages.</p>
-      <div class="about-foot">
-        <span>📍 Lyon · Mobilité selon les opportunités</span>
-        <span>📩 nicolas_amzallag@yahoo.fr</span>
-      </div>
-    </div>
-    <div class="axe star" style="animation:cardUp 0.5s 0.1s both;">
-      <div class="aside" style="background:var(--gold);">★</div>
-      <div class="abody">
-        <div class="abadge">PRIORITÉ PRINCIPALE</div>
-        <div class="attl">Business Developer &amp; Partenariats — Événementiel &amp; Culture</div>
-        <div class="adesc">Poste en développement commercial (BDR, Account Manager, Sales Manager) dans l&apos;événementiel, la culture ou la tech. Spécialisé dans les univers créatifs avec une maîtrise des outils d&apos;IA générative pour prospecter, analyser et convaincre avec efficacité.</div>
-        <div class="tags"><span class="tag g">CDI prioritaire</span><span class="tag">Événementiel</span><span class="tag">Tech / SaaS</span><span class="tag">Culture</span><span class="tag">Lyon &amp; région</span></div>
-      </div>
-    </div>
-    <div class="axe" style="animation:cardUp 0.5s 0.2s both;">
-      <div class="aside" style="background:#3A5070;">+</div>
-      <div class="abody">
-        <div class="abadge">OUVERT ÉGALEMENT</div>
-        <div class="attl">Rôle hybride Business / IA</div>
-        <div class="adesc">Revenue Enablement, Sales Ops IA, Growth IA. Profils émergents combinant expertise commerciale et maîtrise des outils IA pour structurer et scaler les équipes de vente — principalement en scale-up et tech.</div>
-        <div class="tags"><span class="tag">Scale-up</span><span class="tag">Revenue Ops</span><span class="tag">Sales Enablement</span><span class="tag">Growth</span></div>
-      </div>
-    </div>
-    <div class="axe" style="animation:cardUp 0.5s 0.3s both;">
-      <div class="aside" style="background:#2A4A3A;">✦</div>
-      <div class="abody">
-        <div class="abadge">COMPÉTENCES TRANSVERSES VALORISABLES</div>
-        <div class="attl">Marketing · Gestion de projets · Créativité</div>
-        <div class="adesc">Direction artistique, coordination de projets culturels complexes (jusqu&apos;à 15 artistes internationaux), création de contenus et supports marketing avec IA. Capacité à porter un projet de A à Z — de la conception à l&apos;exécution — avec un sens fort du storytelling et de l&apos;image de marque.</div>
-        <div class="tags"><span class="tag">Brand &amp; Storytelling</span><span class="tag">Direction artistique</span><span class="tag">Gestion de projet</span><span class="tag">Contenus IA</span><span class="tag">Créativité</span></div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -619,7 +615,6 @@ body:hover #cur{opacity:1;}
   </div>
 </div>
 
-
 <!-- 5 · CONTACT -->
 <div class="slide" id="s5">
   <div class="inner">
@@ -634,13 +629,12 @@ body:hover #cur{opacity:1;}
       <div style="font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,22px);font-weight:700;color:#fff;margin-bottom:10px;">Business Developer &amp; Partenariats — Événementiel · Culture · SaaS</div>
       <div style="font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.8;">
         Événementiel &amp; Culture · IA appliquée au quotidien<br>
-        Lyon, Auvergne-Rhône-Alpes · <strong style="color:var(--gold)">Disponible Immédiatement</strong>
+        Lyon, Auvergne-Rhône-Alpes
       </div>
       <button class="cta-btn" id="ctaEmail"><span>✉ Contactez-moi</span></button>
     </div>
   </div>
 </div>
-
 </div>
 
 <div id="fnav">
@@ -660,7 +654,7 @@ body:hover #cur{opacity:1;}
   var cx=mx, cy=my;
   document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
   (function animCur(){cx+=(mx-cx)*0.12;cy+=(my-cy)*0.12;cur2.style.left=cx+'px';cur2.style.top=cy+'px';requestAnimationFrame(animCur);})();
-  document.querySelectorAll('a,button,.c-chip,.card,.axe,.tl').forEach(function(el){
+  document.querySelectorAll('a,button,.c-chip,.card,.pillar,.tl').forEach(function(el){
     el.addEventListener('mouseenter',function(){document.body.classList.add('cur-big');});
     el.addEventListener('mouseleave',function(){document.body.classList.remove('cur-big');});
   });
@@ -697,12 +691,12 @@ body:hover #cur{opacity:1;}
   var pb=document.getElementById('pb'),nb=document.getElementById('nb');
 
   function animBars(){
-    document.querySelectorAll('#s2 .sbf').forEach(function(f){
+    document.querySelectorAll('#s3 .sbf').forEach(function(f){
       setTimeout(function(){f.style.width=f.getAttribute('data-w')+'%';f.classList.add('active');},200);
     });
   }
   function staggerCards(slideEl){
-    slideEl.querySelectorAll('.card,.axe,.tl,.chks li').forEach(function(el,i){
+    slideEl.querySelectorAll('.card,.pillar,.tl,.chks li').forEach(function(el,i){
       el.style.animationDelay=(i*0.07+0.05)+'s';
       el.style.animationName='none';
       requestAnimationFrame(function(){requestAnimationFrame(function(){el.style.animationName='';});});
@@ -718,7 +712,7 @@ body:hover #cur{opacity:1;}
     fc.textContent=(cur_+1)+' / '+N;
     pb.disabled=cur_===0;nb.disabled=cur_===N-1;
     prog.style.width=(cur_/(N-1)*100)+'%';
-    if(cur_===2)animBars();
+    if(cur_===3)animBars();
     staggerCards(slides[cur_]);
   }
 
