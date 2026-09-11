@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nicolas Amzallag — Business Developer Confirmé · Événementiel & Culture | IA appliquée</title>
+<title>Nicolas Amzallag — Business Developer & Partenariats · Événementiel · Culture · SaaS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -250,6 +250,11 @@ body:hover #cur{opacity:1;}
 .tl:hover .ttag{background:var(--goldl);border-color:rgba(201,168,76,0.4);}
 .ttag.b{color:#6A9FD8;border-color:rgba(106,159,216,0.2);}
 
+/* ══ RECENT MISSIONS SUBHEADER ══ */
+.subhead{display:flex;align-items:center;gap:10px;margin:8px 0 20px;}
+.subhead-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(106,159,216,0.5),transparent);}
+.subhead-lbl{font-size:11px;font-weight:700;color:#6A9FD8;text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;}
+
 /* ══ AXES ══ */
 .axe{
   display:flex;align-items:stretch;
@@ -316,6 +321,32 @@ body:hover #cur{opacity:1;}
 .lbl{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .lbl::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(201,168,76,0.3),transparent);}
 .mb20{margin-bottom:20px;}
+
+/* ══ BANNER (LinkedIn visual) ══ */
+.pbanner{
+  position:relative;border-radius:16px;overflow:hidden;margin-bottom:20px;
+  border:1px solid rgba(201,168,76,0.3);
+  animation:cardRise 0.6s cubic-bezier(0.4,0,0.2,1) both;
+}
+.pbanner img{display:block;width:100%;height:auto;max-height:180px;object-fit:cover;object-position:center 30%;}
+.pbanner::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(10,21,32,0.35) 0%,rgba(10,21,32,0.05) 45%,rgba(10,21,32,0.35) 100%);
+  pointer-events:none;
+}
+
+/* ══ ABOUT CARD ══ */
+.about{
+  background:linear-gradient(135deg,rgba(27,43,75,0.55),rgba(201,168,76,0.04));
+  border:1px solid rgba(201,168,76,0.3);border-radius:16px;padding:24px 26px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+  animation:cardRise 0.6s cubic-bezier(0.4,0,0.2,1) both;
+}
+.about-lbl{display:inline-block;font-size:10px;font-weight:700;background:var(--goldl);color:var(--gold);border:1px solid rgba(201,168,76,0.3);border-radius:100px;padding:2px 10px;margin-bottom:12px;letter-spacing:0.5px;}
+.about p{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:12px;}
+.about p:last-of-type{margin-bottom:0;}
+.about strong{color:var(--text);font-weight:600;}
+.about-foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--gold);font-weight:500;}
 
 /* ══ CTA BUTTON ══ */
 .cta-btn{
@@ -386,6 +417,8 @@ body:hover #cur{opacity:1;}
   .fb{font-size:12px;padding:7px 14px;}
   .nlg{font-size:13px;margin-right:12px;}
   .ntab{font-size:11px;padding:6px 10px;}
+  .pbanner img{max-height:110px;}
+  .about{padding:18px 16px;}
 }
 @media(max-width:380px){.nlg{display:none;}.c-name{font-size:28px;}}
 </style>
@@ -416,9 +449,9 @@ body:hover #cur{opacity:1;}
 <div class="slide" id="s0">
   <div class="cover">
     <div class="c-name">Nicolas Amzallag</div>
-    <div class="c-title">Business Developer Confirmé – Événementiel &amp; Culture | IA appliquée</div>
-    <div class="c-sub">Événementiel · Culture · IA appliquée · Lyon</div>
-    <div class="c-pill">🚀 Business Developer confirmé · Spécialisé Événementiel &amp; Culture · IA au quotidien</div>
+    <div class="c-title">Business Developer &amp; Partenariats</div>
+    <div class="c-sub">Événementiel · Culture · SaaS · Lyon</div>
+    <div class="c-pill">🚀 Stratégie commerciale · Gestion de projets · IA appliquée</div>
     <div class="photo-wrap">
       <div class="photo-ring">
         <div class="photo-inner">
@@ -441,46 +474,49 @@ body:hover #cur{opacity:1;}
     </div>
     <div class="tline">
       <div class="tl" style="animation-delay:0.1s">
-        <div class="td b"></div>
-        <div class="tdate b">Déc. 2025 – Avr. 2026</div>
-        <div class="tttl">Coordinateur Équipes &amp; Opérations, Festivals — UV EVENTS · Lyon</div>
-        <div class="tbody">Recrutement des équipes et gestion opérationnelle du personnel sur site pour L&apos;Amour Festival et Hardboat Festival. Contrats, fiches de paie, suivi administratif en conditions terrain — mission réussie sous forte contrainte logistique et temporelle.</div>
-        <div class="ttag b">Événementiel · Staffing · Festival</div>
-      </div>
-      <div class="tl" style="animation-delay:0.2s">
-        <div class="td b"></div>
-        <div class="tdate b">Sept. – Oct. 2025</div>
-        <div class="tttl">Consultant Stratégie de Marque &amp; Storytelling — AXIS EXPERIENCE · Albanie</div>
-        <div class="tbody">Définition de la vision de marque, brand book et storytelling éditorial pour un festival culturel international. Recommandations stratégiques appuyées par l&apos;IA (analyse concurrentielle, génération de contenus, synthèses). Brand book livré en 6 semaines, stratégie validée par le client.</div>
-        <div class="ttag b">Stratégie · Brand · IA · Festival</div>
-      </div>
-      <div class="tl" style="animation-delay:0.3s">
         <div class="td"></div>
         <div class="tdate">2019 – 2025</div>
         <div class="tttl">Business Developer — YURPLAN · Lyon</div>
         <div class="tbody">SaaS billetterie événementielle. Prospection structurée par ICP et scoring leads, séquences multicanal (email, LinkedIn, appels). Acquisition et fidélisation d&apos;un portefeuille festivals, concerts, clubs et salons B2B/B2C. <span style="color:var(--gold);font-weight:600">IA intégrée quotidiennement</span> : génération de pitchs, emails personnalisés et scoring prospects via LLM. CA géré : 500K€ — +20% en 2024/2025, soit +5% au-dessus des objectifs fixés.</div>
         <div class="ttag">SaaS · Billetterie · IA appliquée</div>
       </div>
-      <div class="tl" style="animation-delay:0.4s">
+      <div class="tl" style="animation-delay:0.2s">
         <div class="td"></div>
         <div class="tdate">2014 – 2019</div>
         <div class="tttl">Responsable Commercial — BATEAU BELLONA · Lyon</div>
         <div class="tbody">Lancement commercial d&apos;un lieu événementiel — création de l&apos;identité, positionnement et premières ventes. Développement B2B auprès d&apos;entreprises et d&apos;agences événementielles. Gestion end-to-end de séminaires, conventions et soirées d&apos;entreprise. Portefeuille constitué ex nihilo — 80+ comptes B2B signés en 5 ans d&apos;activité.</div>
         <div class="ttag">Événementiel · Lieu de réception · B2B</div>
       </div>
-      <div class="tl" style="animation-delay:0.5s">
+      <div class="tl" style="animation-delay:0.3s">
         <div class="td"></div>
         <div class="tdate">2011 – 2014</div>
         <div class="tttl">Chef de Projet Événementiel &amp; Commercial — Freelance · Ibiza, Genève, Lyon</div>
         <div class="tbody">Ibiza-Voice : commercialisation d&apos;espaces publicitaires et développement de partenariats pour un média digital spécialisé musique électronique. Cadenza (Genève) : coordination logistique entre artistes internationaux, clubs et salles de concert. Elektro System (Lyon) : communication événementielle, réseaux sociaux et coordination autour des concerts et événements de musiques électroniques. 3 marchés internationaux, jusqu&apos;à 15 artistes coordonnés simultanément.</div>
         <div class="ttag">International · Artistique · Multisite</div>
       </div>
-      <div class="tl" style="animation-delay:0.6s">
+      <div class="tl" style="animation-delay:0.4s">
         <div class="td"></div>
         <div class="tdate">2002 – 2011</div>
         <div class="tttl">Responsable Régional — CARREFOUR SPECTACLES · Rhône-Alpes</div>
         <div class="tbody">Pilotage commercial d&apos;un réseau de 60 points de vente billetterie, événements et spectacles en région Rhône-Alpes. Fixation des objectifs, suivi des performances et reporting direction. Formation et montée en compétences des équipes terrain. 9 ans d&apos;animation du réseau — 60 PDV accompagnés, taux d&apos;atteinte des objectifs &gt; 95%.</div>
         <div class="ttag">Management réseau · 60 PDV · Rhône-Alpes</div>
+      </div>
+    </div>
+    <div class="subhead"><div class="subhead-lbl">Missions récentes</div><div class="subhead-line"></div></div>
+    <div class="tline">
+      <div class="tl" style="animation-delay:0.5s">
+        <div class="td b"></div>
+        <div class="tdate b">Déc. 2025 – Avr. 2026</div>
+        <div class="tttl">Coordinateur Équipes &amp; Opérations, Festivals — UV EVENTS · Lyon</div>
+        <div class="tbody">Recrutement des équipes et gestion opérationnelle du personnel sur site pour L&apos;Amour Festival et Hardboat Festival. Contrats, fiches de paie, suivi administratif en conditions terrain — mission réussie sous forte contrainte logistique et temporelle.</div>
+        <div class="ttag b">Événementiel · Staffing · Festival</div>
+      </div>
+      <div class="tl" style="animation-delay:0.6s">
+        <div class="td b"></div>
+        <div class="tdate b">Sept. – Oct. 2025</div>
+        <div class="tttl">Consultant Stratégie de Marque &amp; Storytelling — AXIS EXPERIENCE · Albanie</div>
+        <div class="tbody">Définition de la vision de marque, brand book et storytelling éditorial pour un festival culturel international. Recommandations stratégiques appuyées par l&apos;IA (analyse concurrentielle, génération de contenus, synthèses). Brand book livré en 6 semaines, stratégie validée par le client.</div>
+        <div class="ttag b">Stratégie · Brand · IA · Festival</div>
       </div>
     </div>
   </div>
@@ -514,13 +550,26 @@ body:hover #cur{opacity:1;}
     <div class="sh">
       <div class="sh-num">03 / 05</div>
       <div class="sh-title">Mon <em>projet</em> professionnel</div>
-      <div class="sh-desc">Business Developer Confirmé – Événementiel &amp; Culture | IA appliquée — Disponible Immédiatement</div>
+      <div class="sh-desc">Business Developer &amp; Partenariats — Événementiel · Culture · SaaS — Disponible Immédiatement</div>
+    </div>
+    <div class="pbanner"><img src="assets/image.png" alt="Bandeau Business Developer &amp; Partenariats — Nicolas Amzallag"></div>
+    <div class="about">
+      <div class="about-lbl">À PROPOS</div>
+      <p>Mon parcours de plus de 20 ans s&apos;est construit autour du développement commercial, de l&apos;événementiel et de la culture, avec un fil conducteur : développer des projets, créer des relations durables et transformer les opportunités en résultats concrets.</p>
+      <p>Au fil de ces expériences, j&apos;ai évolué dans des environnements variés et complémentaires — billetterie et SaaS chez Yurplan, lieux événementiels, festivals, médias et scène culturelle — avec des responsabilités allant de la prospection et du développement de comptes à la fidélisation, aux partenariats et à la coordination de projets.</p>
+      <p>Chez Yurplan, j&apos;ai notamment géré un portefeuille de <strong>500 K€</strong> et accompagné sa croissance de <strong>+20 %</strong> sur mes derniers exercices. Auparavant, j&apos;ai développé depuis zéro le portefeuille B2B d&apos;un lieu événementiel, travaillé sur des projets culturels internationaux et piloté un réseau régional de 60 points de vente.</p>
+      <p>Plus récemment, j&apos;ai complété ce parcours par une certification et une pratique concrète de l&apos;IA appliquée : recherche et analyse, prospection, rédaction et synthèse, création de contenus, préparation de supports, agents et workflows. Je l&apos;utilise comme un levier pour gagner en efficacité, explorer de nouvelles approches et enrichir ma manière de travailler.</p>
+      <p>Aujourd&apos;hui, je souhaite mettre cette expérience au service d&apos;un nouveau projet, dans un rôle mêlant développement, partenariats et gestion de projets, idéalement dans les univers de l&apos;événementiel, de la culture, du SaaS ou au sein d&apos;un environnement innovant, stimulant et ouvert aux nouveaux usages.</p>
+      <div class="about-foot">
+        <span>📍 Lyon · Mobilité selon les opportunités</span>
+        <span>📩 nicolas_amzallag@yahoo.fr</span>
+      </div>
     </div>
     <div class="axe star" style="animation:cardUp 0.5s 0.1s both;">
       <div class="aside" style="background:var(--gold);">★</div>
       <div class="abody">
         <div class="abadge">PRIORITÉ PRINCIPALE</div>
-        <div class="attl">Business Developer Confirmé – Événementiel &amp; Culture</div>
+        <div class="attl">Business Developer &amp; Partenariats — Événementiel &amp; Culture</div>
         <div class="adesc">Poste en développement commercial (BDR, Account Manager, Sales Manager) dans l&apos;événementiel, la culture ou la tech. Spécialisé dans les univers créatifs avec une maîtrise des outils d&apos;IA générative pour prospecter, analyser et convaincre avec efficacité.</div>
         <div class="tags"><span class="tag g">CDI prioritaire</span><span class="tag">Événementiel</span><span class="tag">Tech / SaaS</span><span class="tag">Culture</span><span class="tag">Lyon &amp; région</span></div>
       </div>
@@ -582,7 +631,7 @@ body:hover #cur{opacity:1;}
     <div class="g2 mb20" id="contactCards"></div>
     <div style="background:linear-gradient(135deg,rgba(27,43,75,0.85),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.4);border-radius:18px;padding:32px;text-align:center;position:relative;overflow:hidden;">
       <div style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%);border-radius:50%;"></div>
-      <div style="font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,22px);font-weight:700;color:#fff;margin-bottom:10px;">Business Developer Confirmé – Événementiel &amp; Culture | IA appliquée</div>
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,22px);font-weight:700;color:#fff;margin-bottom:10px;">Business Developer &amp; Partenariats — Événementiel · Culture · SaaS</div>
       <div style="font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.8;">
         Événementiel &amp; Culture · IA appliquée au quotidien<br>
         Lyon, Auvergne-Rhône-Alpes · <strong style="color:var(--gold)">Disponible Immédiatement</strong>
@@ -623,7 +672,7 @@ body:hover #cur{opacity:1;}
   document.getElementById('ccontacts').innerHTML=
     chip(ml,'&#9993;',em,false)+
     chip('tel:+33642935480','&#128222;','06 42 93 54 80',false)+
-    chip('https://linkedin.com/in/nicolas-amzallag','&#128188;','linkedin.com/in/nicolas-amzallag',true)+
+    chip('https://www.linkedin.com/in/nicolas-amzallag/','&#128188;','linkedin.com/in/nicolas-amzallag',true)+
     '<span class="c-chip">&#128205; Lyon, France</span>';
 
   function card(href,ico,ttl,sub,gld,blank){
@@ -633,7 +682,7 @@ body:hover #cur{opacity:1;}
   document.getElementById('contactCards').innerHTML=
     card(ml,'&#9993;&#65039;','Email',em,true,false)+
     card('tel:+33642935480','&#128222;','T&eacute;l&eacute;phone','06 42 93 54 80',false,false)+
-    card('https://linkedin.com/in/nicolas-amzallag','&#128188;','LinkedIn','linkedin.com/in/nicolas-amzallag',false,true)+
+    card('https://www.linkedin.com/in/nicolas-amzallag/','&#128188;','LinkedIn','linkedin.com/in/nicolas-amzallag',false,true)+
     card(null,'&#128205;','Localisation','Lyon &mdash; Auvergne-Rh&ocirc;ne-Alpes',false,false);
 
   /* ── CTA EMAIL ── */
