@@ -229,6 +229,8 @@ body:hover #cur{opacity:1;}
 .card:hover::before{opacity:1;}
 .card.gld{border-color:rgba(201,168,76,0.5);background:var(--goldl);}
 .card.gld::before{background:linear-gradient(135deg,rgba(201,168,76,0.12) 0%,transparent 60%);}
+.card.cbanner{padding:0;overflow:hidden;min-height:96px;}
+.card.cbanner img{width:100%;height:100%;min-height:96px;object-fit:cover;object-position:center 35%;display:block;}
 @keyframes cardRise{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 .ci{font-size:24px;margin-bottom:10px;display:block;}
 .ct{font-size:14px;font-weight:600;color:#fff;margin-bottom:6px;}
@@ -673,11 +675,15 @@ body:hover #cur{opacity:1;}
     var inner='<div class="card'+(gld?' gld':'')+'" style="text-align:center;cursor:none"><div class="ci">'+ico+'</div><div class="ct">'+ttl+'</div><div class="cb"'+(gld?' style="color:var(--gold)"':'')+'>'+sub+'</div></div>';
     return href?'<a href="'+href+'"'+(blank?' target="_blank" rel="noopener"':'')+' style="text-decoration:none">'+inner+'</a>':inner;
   }
+  function bannerCard(href,src,alt,blank){
+    var inner='<div class="card cbanner" style="cursor:none"><img src="'+src+'" alt="'+alt+'"></div>';
+    return href?'<a href="'+href+'"'+(blank?' target="_blank" rel="noopener"':'')+' style="text-decoration:none">'+inner+'</a>':inner;
+  }
   document.getElementById('contactCards').innerHTML=
     card(ml,'&#9993;&#65039;','Email',em,true,false)+
     card('tel:+33642935480','&#128222;','T&eacute;l&eacute;phone','06 42 93 54 80',false,false)+
     card('https://www.linkedin.com/in/nicolas-amzallag/','&#128188;','LinkedIn','linkedin.com/in/nicolas-amzallag',false,true)+
-    card(null,'&#128205;','Localisation','Lyon &mdash; Auvergne-Rh&ocirc;ne-Alpes',false,false);
+    bannerCard('https://www.linkedin.com/in/nicolas-amzallag/','assets/image.png','Bandeau LinkedIn — Nicolas Amzallag',true);
 
   /* ── CTA EMAIL ── */
   var cta=document.getElementById('ctaEmail');
