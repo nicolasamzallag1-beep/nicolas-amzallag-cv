@@ -677,7 +677,7 @@ body:hover #cur{opacity:1;}
   }
   function bannerCard(href,src,alt,blank){
     var inner='<div class="card cbanner" style="cursor:none"><img src="'+src+'" alt="'+alt+'"></div>';
-    return href?'<a href="'+href+'"'+(blank?' target="_blank" rel="noopener"':'')+' style="text-decoration:none">'+inner+'</a>':inner;
+    return href?'<a href="'+href+'"'+(blank?' target="_blank" rel="noopener"':'')+' style="text-decoration:none;display:block;grid-column:1/-1">'+inner+'</a>':inner;
   }
   document.getElementById('contactCards').innerHTML=
     card(ml,'&#9993;&#65039;','Email',em,true,false)+
