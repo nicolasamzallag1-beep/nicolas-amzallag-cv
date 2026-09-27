@@ -270,6 +270,12 @@ a .card,a .card *{cursor:pointer!important;}
 #contactModal{width:min(92vw,440px);max-height:86vh;overflow-y:auto;background:linear-gradient(160deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02)),var(--navy);border:1px solid var(--line2);border-radius:20px;padding:28px 26px;position:relative;box-shadow:0 30px 70px -20px rgba(0,0,0,0.6);}
 #contactModal h2{font-size:20px;font-weight:600;letter-spacing:-0.02em;color:#fff;margin-bottom:8px;}
 #contactModal .cm-intro{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:20px;}
+.cm-coord{margin-bottom:20px;}
+.cm-coord-row{display:flex;align-items:center;gap:10px;font-size:15px;color:#fff;padding:10px 0;border-bottom:1px solid var(--line);}
+.cm-coord-row:last-child{border-bottom:0;}
+.cm-coord-row .ii{margin-right:0;color:var(--ice);}
+#cmCopy{width:100%;justify-content:center;}
+
 #contactClose{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,0.03);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;}
 #contactClose:hover{color:#fff;border-color:var(--line2);}
 .cm-field{margin-bottom:14px;}
@@ -480,7 +486,7 @@ a .card,a .card *{cursor:pointer!important;}
     <div class="sh">
       <div class="sh-num">05 / 05</div>
       <div class="sh-title">Me <em>contacter</em></div>
-      <div class="sh-desc">Disponible pour un échange — réponse garantie sous 24h</div>
+      <div class="sh-desc">Une question, une opportunité ou simplement envie d’échanger ? Contactez-moi, je vous répondrai rapidement.</div>
     </div>
     <div class="bcard">
       <div class="bc-photo">
@@ -522,14 +528,11 @@ a .card,a .card *{cursor:pointer!important;}
       <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <h2 id="cmTitle">Me contacter</h2>
-    <p class="cm-intro">Écrivez-moi directement ici. Aucun logiciel de messagerie ne s’ouvrira.</p>
-    <form id="contactForm" novalidate>
-      <div class="cm-field"><label for="cmName">Nom</label><input id="cmName" name="name" type="text" autocomplete="name" required></div>
-      <div class="cm-field"><label for="cmEmail">Email</label><input id="cmEmail" name="email" type="email" autocomplete="email" required></div>
-      <div class="cm-field"><label for="cmMessage">Message</label><textarea id="cmMessage" name="message" required></textarea></div>
-      <button type="submit" class="cta-btn"><span class="btnl" id="cmSubmitLabel">Envoyer le message</span></button>
-      <div id="cmStatus" role="status" aria-live="polite"></div>
-    </form>
+    <div class="cm-coord">
+      <div class="cm-coord-row"><span class="ii"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3.2"/><path d="M4.2 8.4 12 13.6l7.8-5.2"/></svg></span>nicolas_amzallag@yahoo.fr</div>
+      <div class="cm-coord-row"><span class="ii"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 4h2.9l1.6 4-2 1.3a10.2 10.2 0 0 0 4.6 4.6L15 11.9l4 1.6v2.9A2.6 2.6 0 0 1 16.4 19 12.9 12.9 0 0 1 5 7.6 2.6 2.6 0 0 1 6.6 4Z"/></svg></span>06 42 93 54 80</div>
+    </div>
+    <button type="button" id="cmCopy" class="cta-btn"><span class="btnl" id="cmCopyLabel">Copier l’adresse email</span></button>
   </div>
 </div>
 <script>
@@ -579,16 +582,13 @@ a .card,a .card *{cursor:pointer!important;}
   var cta=document.getElementById('ctaEmail');
   var overlay=document.getElementById('contactOverlay');
   var modal=document.getElementById('contactModal');
-  var form=document.getElementById('contactForm');
-  var status=document.getElementById('cmStatus');
-  var submitLbl=document.getElementById('cmSubmitLabel');
-  var submitBtn=form.querySelector('button[type=\"submit\"]');
+  var copyBtn=document.getElementById('cmCopy');
+  var copyLbl=document.getElementById('cmCopyLabel');
   var lastFocus=null;
   function openModal(){
     lastFocus=document.activeElement;
     overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
-    status.textContent='';status.className='';
-    document.getElementById('cmName').focus();
+    document.getElementById('contactClose').focus();
     document.addEventListener('keydown',onKey);
   }
   function closeModal(){
@@ -600,40 +600,19 @@ a .card,a .card *{cursor:pointer!important;}
   if(cta){cta.addEventListener('click',function(e){e.preventDefault();openModal();});}
   document.getElementById('contactClose').addEventListener('click',closeModal);
   overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var name=document.getElementById('cmName').value.trim();
-    var mail=document.getElementById('cmEmail').value.trim();
-    var msg=document.getElementById('cmMessage').value.trim();
-    var mailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
-    if(!name||!mailOk||!msg){
-      status.textContent="Merci de renseigner votre nom, un email valide et un message.";
-      status.className='err';
-      return;
-    }
-    submitBtn.disabled=true;
-    submitLbl.textContent='Envoi en cours…';
-    status.textContent='';status.className='';
-    fetch('https://formsubmit.co/ajax/'+em,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({name:name,email:mail,message:msg,_subject:'Message depuis le profil digital — Nicolas Amzallag',_captcha:'false'})
-    }).then(function(r){return r.json().then(function(j){return {ok:r.ok&&j&&j.success==='true',body:j};});}).then(function(res){
-      submitBtn.disabled=false;submitLbl.textContent='Envoyer le message';
-      if(res.ok){
-        status.textContent='Message envoyé. Merci — je vous répondrai rapidement.';
-        status.className='ok';
-        form.reset();
-      }else{
-        status.textContent="L'envoi n'a pas abouti. Mon email reste affiché juste au-dessus.";
-        status.className='err';
-      }
-    }).catch(function(){
-      submitBtn.disabled=false;submitLbl.textContent='Envoyer le message';
-      status.textContent="L'envoi n'a pas abouti. Mon email reste affiché juste au-dessus.";
-      status.className='err';
+  if(copyBtn){
+    copyBtn.addEventListener('click',function(){
+      var restore=function(){clearTimeout(copyBtn._t);copyBtn._t=setTimeout(function(){copyLbl.textContent='Copier l’adresse email';},2000);};
+      var done=function(){copyLbl.textContent='Adresse copiée';restore();};
+      var fallback=function(){
+        var t=document.createElement('textarea');t.value=em;t.setAttribute('readonly','');
+        t.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(t);t.select();
+        try{document.execCommand('copy');}catch(_){}
+        document.body.removeChild(t);done();
+      };
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(em).then(done,fallback);}else{fallback();}
     });
-  });
+  }
 
   /* ── ŒIL = LECTURE / PAUSE (aucun autoplay) ── */
   var eyeBtn=document.getElementById('eyeAudio');
