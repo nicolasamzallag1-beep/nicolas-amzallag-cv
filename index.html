@@ -508,13 +508,14 @@ a .card,a .card *{cursor:pointer!important;}
 
   /* ── INJECT CONTACTS ── */
   function chipI(ico,txt){return '<span class="c-chip inert">'+ico+'<span class="t">'+txt+'</span></span>';}
+  function chipL(ico,txt){return '<span class="c-chip" aria-label="'+txt+'" title="'+txt+'">'+ico+'<span class="t">'+txt+'</span></span>';}
   function chip(href,ico,txt,blank){
     return '<a class="c-chip" href="'+href+'" aria-label="'+txt+'" title="'+txt+'"'+(blank?' target="_blank" rel="noopener"':'')+'>'+ico+'<span class="t">'+txt+'</span></a>';
   }
   document.getElementById('ccontacts').innerHTML=
     chipI(ICO.mail,em)+
     chipI(ICO.phone,'06 42 93 54 80')+
-    chip('https://www.linkedin.com/in/nicolas-amzallag/',ICO.case,'linkedin.com/in/nicolas-amzallag',true)+
+    chipL(ICO.case,'linkedin.com/in/nicolas-amzallag')+
     '<span class="c-chip" title="Lyon, France">'+ICO.pin+'<span class="t">Lyon, France</span></span>';
 
   function card(href,ico,ttl,sub,gld,blank){
@@ -523,13 +524,13 @@ a .card,a .card *{cursor:pointer!important;}
   }
   function bannerCard(href,src,alt,blank){
     var inner='<div class="card cbanner" style="cursor:none"><img src="'+src+'" alt="'+alt+'"></div>';
-    return href?'<a href="'+href+'"'+(blank?' target="_blank" rel="noopener"':'')+' style="text-decoration:none;display:block;grid-column:1/-1">'+inner+'</a>':inner;
+    return '<a'+(href?' href="'+href+'"'+(blank?' target="_blank" rel="noopener"':''):'')+' style="text-decoration:none;display:block;grid-column:1/-1">'+inner+'</a>';
   }
   document.getElementById('contactCards').innerHTML=
     card(null,ICO.mail,'Email',em,true,false)+
     card(null,ICO.phone,'T&eacute;l&eacute;phone','06 42 93 54 80',false,false)+
-    card('https://www.linkedin.com/in/nicolas-amzallag/',ICO.case,'LinkedIn','linkedin.com/in/nicolas-amzallag',false,true)+
-    bannerCard('https://www.linkedin.com/in/nicolas-amzallag/','assets/image.png?v=2','Bandeau LinkedIn — Nicolas Amzallag',true);
+    card(null,ICO.case,'LinkedIn','linkedin.com/in/nicolas-amzallag',false,true)+
+    bannerCard(null,'assets/image.png?v=2','Bandeau LinkedIn — Nicolas Amzallag',false);
 
   /* ── CTA EMAIL ── */
   var cta=document.getElementById('ctaEmail');
