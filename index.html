@@ -259,6 +259,32 @@ a .card,a .card *{cursor:pointer!important;}
   .c-row{flex:0 0 auto;min-height:66px;padding:10px 24px;}
   .hero-banner{height:min(calc(100vh - 76px - 60px - 96px),41.6vw);}
 }
+
+/* Œil = lecture/pause de la musique (aucun player visible, aucun texte, aucun autoplay) */
+#eyeAudio{cursor:pointer;transition:box-shadow .4s,color .4s;}
+#eyeAudio.playing{color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,0.22),0 0 22px -2px rgba(120,190,220,0.55);}
+
+/* ───────── Formulaire de contact intégré (overlay) ───────── */
+#contactOverlay{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(5,7,10,0.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+#contactOverlay.open{display:flex;}
+#contactModal{width:min(92vw,440px);max-height:86vh;overflow-y:auto;background:linear-gradient(160deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02)),var(--navy);border:1px solid var(--line2);border-radius:20px;padding:28px 26px;position:relative;box-shadow:0 30px 70px -20px rgba(0,0,0,0.6);}
+#contactModal h2{font-size:20px;font-weight:600;letter-spacing:-0.02em;color:#fff;margin-bottom:8px;}
+#contactModal .cm-intro{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:20px;}
+#contactClose{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,0.03);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+#contactClose:hover{color:#fff;border-color:var(--line2);}
+.cm-field{margin-bottom:14px;}
+.cm-field label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:6px;letter-spacing:0.01em;}
+.cm-field input,.cm-field textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:14px;color:#fff;}
+.cm-field input:focus,.cm-field textarea:focus{outline:none;border-color:var(--line2);background:rgba(255,255,255,0.06);}
+.cm-field textarea{resize:vertical;min-height:96px;}
+#contactForm .cta-btn{width:100%;justify-content:center;margin-top:4px;}
+#contactForm .cta-btn:disabled{opacity:.6;cursor:default;transform:none;}
+#cmStatus{margin-top:12px;font-size:13px;line-height:1.5;min-height:1px;}
+#cmStatus.ok{color:#8fe3b0;}
+#cmStatus.err{color:#f2a3a3;}
+@media(max-width:600px){
+  #contactModal{padding:22px 18px;border-radius:16px;}
+}
 </style>
 </head>
 <body>
@@ -270,7 +296,7 @@ a .card,a .card *{cursor:pointer!important;}
 <div id="beams"><div class="beam beam1"></div><div class="beam beam2"></div><div class="beam beam3"></div><div class="beam beam4"></div></div>
 
 <nav id="nav">
-  <div class="nlg" title="Nicolas Amzallag"><svg class="eye" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-label="Nicolas Amzallag"><path d="M2.5 16C7.5 8.6 24.5 8.6 29.5 16 24.5 23.4 7.5 23.4 2.5 16Z"/><circle cx="16" cy="16" r="5.2" stroke-opacity=".85"/><circle cx="16" cy="16" r="2.2" fill="currentColor" stroke="none"/></svg></div>
+  <div class="nlg" id="eyeAudio" title="Nicolas Amzallag" role="button" tabindex="0" aria-label="Lecture / pause de la musique" aria-pressed="false"><audio id="tripLove" src="assets/trip-hop-love.mp3" loop preload="none"></audio><svg class="eye" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-label="Nicolas Amzallag"><path d="M2.5 16C7.5 8.6 24.5 8.6 29.5 16 24.5 23.4 7.5 23.4 2.5 16Z"/><circle cx="16" cy="16" r="5.2" stroke-opacity=".85"/><circle cx="16" cy="16" r="2.2" fill="currentColor" stroke="none"/></svg></div>
   <div class="ntabs">
     <button class="ntab" data-n="0">Accueil</button>
     <button class="ntab" data-n="1">À propos</button>
@@ -411,9 +437,9 @@ a .card,a .card *{cursor:pointer!important;}
     </div>
     <div class="g2 mb20">
       <div class="card gld"><div class="ci"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="3.2"/><path d="M9 7.5V6.2A2.2 2.2 0 0 1 11.2 4h1.6A2.2 2.2 0 0 1 15 6.2v1.3M3 13h18"/></svg></div><div class="ct">Commercial B2B confirmé</div><div class="cb">Acquisition, gestion grands comptes, upselling, management réseau. Cycle de vente complet en SaaS, événementiel et culture.</div></div>
-      <div class="card gld"><div class="ci"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.2" y="6.2" width="11.6" height="11.6" rx="3"/><path d="M9.6 3v3.2M14.4 3v3.2M9.6 17.8V21M14.4 17.8V21M3 9.6h3.2M3 14.4h3.2M17.8 9.6H21M17.8 14.4H21"/><circle cx="12" cy="12" r="1.7"/></svg></div><div class="ct">Usage avancé de l&apos;IA générative</div><div class="cb">Usage quotidien depuis 2024 : pitchs, prospection, personnalisation à grande échelle, création de contenus. Certification RS6776 (mars 2026).</div></div>
-      <div class="card"><div class="ci"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.3"/><path d="M12 1.8v3M12 19.2v3M1.8 12h3M19.2 12h3"/></svg></div><div class="ct">Segmentation &amp; Prospection</div><div class="cb">Ciblage et priorisation des comptes, séquences de prospection multicanale (email, LinkedIn, appels), personnalisées à l&apos;aide de l&apos;IA.</div></div>
-      <div class="card" style="grid-column:1/-1;max-width:280px;margin:0 auto;width:100%;"><div class="ci"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2M12 3.4c3.2 2.7 3.2 14.5 0 17.2M12 3.4c-3.2 2.7-3.2 14.5 0 17.2"/></svg></div><div class="ct">Langues &amp; International</div><div class="cb">Anglais bilingue · Espagnol courant. Expériences à Ibiza, Genève, Albanie. Réseau événementiel et culturel France.</div></div>
+      <div class="card gld"><div class="ci"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.2" y="6.2" width="11.6" height="11.6" rx="3"/><path d="M9.6 3v3.2M14.4 3v3.2M9.6 17.8V21M14.4 17.8V21M3 9.6h3.2M3 14.4h3.2M17.8 9.6H21M17.8 14.4H21"/><circle cx="12" cy="12" r="1.7"/></svg></div><div class="ct">IA appliquée &amp; workflows</div><div class="cb">Usage quotidien de l’IA pour la préparation commerciale, la recherche, la personnalisation, la création de contenus et la structuration de workflows. Certification RS6776 — mars 2026.</div></div>
+      <div class="card"><div class="ci"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.3"/><path d="M12 1.8v3M12 19.2v3M1.8 12h3M19.2 12h3"/></svg></div><div class="ct">Ciblage &amp; développement commercial</div><div class="cb">Identification et priorisation des comptes, qualification des opportunités et personnalisation des approches avec l’appui de l’IA.</div></div>
+      <div class="card" style="grid-column:1/-1;max-width:280px;margin:0 auto;width:100%;"><div class="ci"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2M12 3.4c3.2 2.7 3.2 14.5 0 17.2M12 3.4c-3.2 2.7-3.2 14.5 0 17.2"/></svg></div><div class="ct">Langues &amp; International</div><div class="cb">Anglais bilingue · Espagnol courant. Expériences professionnelles à Ibiza, Genève et en Albanie.</div></div>
     </div>
     <div class="lbl">Niveau de maîtrise des outils</div>
     <div class="sb"><div class="sbt"><span>CRM &amp; prospection (Pipedrive)</span><strong>Expert</strong></div><div class="sbtr"><div class="sbf" data-w="92"></div></div></div>
@@ -489,6 +515,23 @@ a .card,a .card *{cursor:pointer!important;}
   <button class="fb" id="nb"><span class="btnl">Suivant<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13.5M13 6.5l5.5 5.5-5.5 5.5"/></svg></span></button>
 </div>
 
+
+<div id="contactOverlay" aria-hidden="true">
+  <div id="contactModal" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
+    <button type="button" id="contactClose" aria-label="Fermer">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h2 id="cmTitle">Me contacter</h2>
+    <p class="cm-intro">Écrivez-moi directement ici. Aucun logiciel de messagerie ne s’ouvrira.</p>
+    <form id="contactForm" novalidate>
+      <div class="cm-field"><label for="cmName">Nom</label><input id="cmName" name="name" type="text" autocomplete="name" required></div>
+      <div class="cm-field"><label for="cmEmail">Email</label><input id="cmEmail" name="email" type="email" autocomplete="email" required></div>
+      <div class="cm-field"><label for="cmMessage">Message</label><textarea id="cmMessage" name="message" required></textarea></div>
+      <button type="submit" class="cta-btn"><span class="btnl" id="cmSubmitLabel">Envoyer le message</span></button>
+      <div id="cmStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
 <script>
 (function(){
   /* ── EMAIL PROTECTION ── */
@@ -534,7 +577,76 @@ a .card,a .card *{cursor:pointer!important;}
 
   /* ── CTA EMAIL ── */
   var cta=document.getElementById('ctaEmail');
-  if(cta){cta.addEventListener('click',function(e){e.preventDefault();});}
+  var overlay=document.getElementById('contactOverlay');
+  var modal=document.getElementById('contactModal');
+  var form=document.getElementById('contactForm');
+  var status=document.getElementById('cmStatus');
+  var submitLbl=document.getElementById('cmSubmitLabel');
+  var submitBtn=form.querySelector('button[type=\"submit\"]');
+  var lastFocus=null;
+  function openModal(){
+    lastFocus=document.activeElement;
+    overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
+    status.textContent='';status.className='';
+    document.getElementById('cmName').focus();
+    document.addEventListener('keydown',onKey);
+  }
+  function closeModal(){
+    overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');
+    document.removeEventListener('keydown',onKey);
+    if(lastFocus)lastFocus.focus();
+  }
+  function onKey(e){if(e.key==='Escape')closeModal();}
+  if(cta){cta.addEventListener('click',function(e){e.preventDefault();openModal();});}
+  document.getElementById('contactClose').addEventListener('click',closeModal);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('cmName').value.trim();
+    var mail=document.getElementById('cmEmail').value.trim();
+    var msg=document.getElementById('cmMessage').value.trim();
+    var mailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
+    if(!name||!mailOk||!msg){
+      status.textContent="Merci de renseigner votre nom, un email valide et un message.";
+      status.className='err';
+      return;
+    }
+    submitBtn.disabled=true;
+    submitLbl.textContent='Envoi en cours…';
+    status.textContent='';status.className='';
+    fetch('https://formsubmit.co/ajax/'+em,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name:name,email:mail,message:msg,_subject:'Message depuis le profil digital — Nicolas Amzallag',_captcha:'false'})
+    }).then(function(r){return r.json().then(function(j){return {ok:r.ok&&j&&j.success==='true',body:j};});}).then(function(res){
+      submitBtn.disabled=false;submitLbl.textContent='Envoyer le message';
+      if(res.ok){
+        status.textContent='Message envoyé. Merci — je vous répondrai rapidement.';
+        status.className='ok';
+        form.reset();
+      }else{
+        status.textContent="L'envoi n'a pas abouti. Mon email reste affiché juste au-dessus.";
+        status.className='err';
+      }
+    }).catch(function(){
+      submitBtn.disabled=false;submitLbl.textContent='Envoyer le message';
+      status.textContent="L'envoi n'a pas abouti. Mon email reste affiché juste au-dessus.";
+      status.className='err';
+    });
+  });
+
+  /* ── ŒIL = LECTURE / PAUSE (aucun autoplay) ── */
+  var eyeBtn=document.getElementById('eyeAudio');
+  var tune=document.getElementById('tripLove');
+  if(eyeBtn&&tune){
+    tune.volume=0.28;
+    var toggleTune=function(){
+      if(tune.paused){tune.play().catch(function(){});eyeBtn.classList.add('playing');eyeBtn.setAttribute('aria-pressed','true');}
+      else{tune.pause();eyeBtn.classList.remove('playing');eyeBtn.setAttribute('aria-pressed','false');}
+    };
+    eyeBtn.addEventListener('click',toggleTune);
+    eyeBtn.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleTune();}});
+  }
 
   /* ── NAVIGATION ── */
   var N=6,cur_=0;
