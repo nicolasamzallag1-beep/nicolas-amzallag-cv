@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nicolas Amzallag — Business Developer &amp; Partenariats</title>
+<meta name="description" content="Business Developer &amp; Partenariats — Événementiel · Culture · SaaS · IA appliquée">
+<meta name="theme-color" content="#0a1018">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Nicolas Amzallag — Business Developer &amp; Partenariats">
+<meta property="og:description" content="Événementiel · Culture · SaaS · IA appliquée">
+<meta property="og:url" content="https://nicolasamzallag1-beep.github.io/nicolas-amzallag-cv/vcard/">
+<meta property="og:image" content="https://nicolasamzallag1-beep.github.io/nicolas-amzallag-cv/assets/image.png">
+<link rel="canonical" href="https://nicolasamzallag1-beep.github.io/nicolas-amzallag-cv/vcard/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%23d6ecf5' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='32' height='32' rx='8' fill='%230a1018' stroke='none'/%3E%3Cpath d='M2.5 16C7.5 8.6 24.5 8.6 29.5 16 24.5 23.4 7.5 23.4 2.5 16Z'/%3E%3Ccircle cx='16' cy='16' r='5.2'/%3E%3Ccircle cx='16' cy='16' r='2.2' fill='%23d6ecf5' stroke='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* V-card — page autonome. Palette, typographies, œil et boutons repris du profil digital. */
+:root{
+  --bg:#0a1018; --bg2:#0e1722;
+  --ink:#f1f5f8; --text:#dbe4ea; --muted:#b3c2cd;
+  --ice:#a9d6ea; --ice2:#d6ecf5; --slate:#b9c5e6;
+  --line:rgba(255,255,255,0.09); --line2:rgba(255,255,255,0.16);
+  --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.22,.7,.12,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{background:var(--bg);-webkit-text-size-adjust:100%;}
+body{
+  min-height:100vh;min-height:100svh;
+  font-family:'Geist',system-ui,sans-serif;font-size:15px;color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  display:flex;align-items:center;justify-content:center;
+  padding:max(40px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(40px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left));
+}
+/* ── FOND : ardoise, courbes fines et reflet soyeux repris du bandeau du profil ── */
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 0% 0%,rgba(46,128,160,0.16),transparent 55%),
+    radial-gradient(90% 70% at 100% 100%,rgba(38,98,130,0.12),transparent 60%),
+    linear-gradient(180deg,#0b131c 0%,#0a1018 55%,#080d14 100%);}
+.bg svg{position:absolute;inset:0;width:100%;height:100%;}
+.bg::after{content:"";position:absolute;inset:0;opacity:.07;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");}
+.bg-portrait{display:none;}
+@media (max-aspect-ratio:1/1){.bg-landscape{display:none;}.bg-portrait{display:block;}}
+
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent;}
+svg.i{width:18px;height:18px;flex-shrink:0;display:block;}
+
+.vc{width:100%;max-width:420px;display:flex;flex-direction:column;}
+
+/* ── IDENTITÉ ── */
+.id{display:flex;flex-direction:column;align-items:center;text-align:center;}
+.eye{width:212px;height:106px;display:block;overflow:visible;margin-bottom:34px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.32));}
+.name{font-size:clamp(34px,10vw,44px);font-weight:300;letter-spacing:-0.035em;line-height:1.02;color:var(--ink);}
+.title{margin-top:14px;font-size:16px;font-weight:500;letter-spacing:-0.005em;color:var(--ice);}
+.sub{margin-top:12px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);line-height:1.8;}
+.sub .sep-mid{display:none;}
+
+/* ── COORDONNÉES ── */
+.side{margin-top:44px;}
+.contacts{list-style:none;border-top:1px solid var(--line);}
+.contacts li{border-bottom:1px solid var(--line);}
+.row{display:flex;align-items:center;gap:16px;min-height:64px;padding:12px 2px;transition:background .3s;}
+.row .ic{color:var(--ice);}
+.row .tx{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1;}
+.row .lbl{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);}
+.row .val{font-size:15px;font-weight:400;color:var(--ink);overflow-wrap:anywhere;}
+.row .go{color:var(--muted);opacity:.55;transition:opacity .3s,transform .3s var(--ease);}
+.row:hover .go,.row:focus-visible .go{opacity:1;transform:translate(2px,-2px);}
+.row:hover{background:rgba(255,255,255,0.025);}
+
+/* ── ACTIONS (boutons du profil digital) ── */
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:32px;}
+.btnl{display:inline-flex;align-items:center;gap:10px;}
+.cta-btn,.cta-btn2{display:inline-flex;align-items:center;justify-content:center;font-family:inherit;font-size:14.5px;font-weight:600;border-radius:999px;padding:15px 28px;transition:transform .25s,background .25s,border-color .25s;}
+.cta-btn{background:#eef4f8;color:#08111a;box-shadow:0 12px 30px -14px rgba(0,0,0,0.7);}
+.cta-btn:hover{background:#fff;transform:translateY(-1px);}
+.cta-btn2{background:transparent;color:#fff;border:1px solid var(--line2);}
+.cta-btn2:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.32);transform:translateY(-1px);}
+a:focus-visible{outline:1px solid var(--ice);outline-offset:3px;border-radius:12px;}
+.cta-btn:focus-visible,.cta-btn2:focus-visible{border-radius:999px;}
+
+/* ── QR CODE ── */
+.qr{margin:40px auto 0;width:128px;padding:10px;border-radius:16px;background:#f1f5f8;border:1px solid var(--line2);}
+.qr img{display:block;width:100%;height:auto;}
+
+/* ── DESKTOP ── */
+@media (min-width:880px){
+  body{padding:64px 48px;}
+  .vc{max-width:980px;display:grid;grid-template-columns:1.1fr 1px .9fr;gap:0 72px;align-items:center;}
+  .vc::before{content:"";grid-column:2;grid-row:1;align-self:stretch;background:var(--line);}
+  .id{grid-column:1;grid-row:1;align-items:flex-start;text-align:left;}
+  .eye{width:344px;height:172px;margin:0 0 44px -18px;}
+  .name{font-size:62px;}
+  .title{margin-top:20px;font-size:18px;}
+  .sub{margin-top:16px;font-size:12px;}
+  .sub .sep-mid{display:inline;}
+  .sub .br-m{display:none;}
+  .side{grid-column:3;grid-row:1;margin-top:0;}
+  .actions{margin-top:28px;}
+  .qr{margin:36px 0 0 auto;width:112px;}
+}
+
+/* ── OUVERTURE DE L'ŒIL (une seule fois) ── */
+.eye .lid{transform-box:fill-box;transform-origin:50% 50%;animation:open .9s var(--ease) .15s both;}
+.eye .iris{transform-box:fill-box;transform-origin:50% 50%;animation:iris .9s var(--ease) .45s both;}
+.eye .pupil{transform-box:fill-box;transform-origin:50% 50%;animation:pupil 1.4s var(--ease) .55s both;}
+.eye .spec{animation:fade .8s ease .95s both;}
+.eye .halo{animation:fade 1.4s ease .5s both;}
+.rise{animation:rise .8s var(--ease) both;}
+.name.rise{animation-delay:.55s;}
+.title.rise{animation-delay:.63s;}
+.sub.rise{animation-delay:.71s;}
+.side.rise{animation-delay:.81s;}
+@keyframes open{0%{opacity:0;transform:scaleY(.06);}35%{opacity:1;}100%{opacity:1;transform:scaleY(1);}}
+@keyframes iris{from{opacity:0;transform:scale(.82);}to{opacity:1;transform:none;}}
+@keyframes pupil{from{transform:scale(1.35);}to{transform:none;}}
+@keyframes fade{from{opacity:0;}}
+@keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){
+  .eye .lid,.eye .iris,.eye .pupil,.eye .spec,.eye .halo,.rise{animation:none;}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <svg class="bg-landscape" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="bgLine" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#a9d6ea" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#a9d6ea" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#a9d6ea" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="bgSheen" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#2e7fa0" stop-opacity="0"/>
+        <stop offset=".55" stop-color="#2e7fa0" stop-opacity=".14"/>
+        <stop offset="1" stop-color="#2e7fa0" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="bgSoft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="28"/></filter>
+    </defs>
+    <path filter="url(#bgSoft)" d="M-80 900C300 720 760 760 1520 420V560C980 780 420 860-80 980Z" fill="url(#bgSheen)"/>
+    <path d="M-80 690C360 560 820 690 1520 330" fill="none" stroke="url(#bgLine)" stroke-width="1" opacity=".55"/>
+    <path d="M-80 760C420 640 900 720 1520 460" fill="none" stroke="url(#bgLine)" stroke-width="1" opacity=".22"/>
+    <path d="M1040-40C1180 180 1320 360 1520 470" fill="none" stroke="url(#bgLine)" stroke-width="1" opacity=".4"/>
+    <path d="M620-40C820 140 1040 230 1520 180" fill="none" stroke="url(#bgLine)" stroke-width="1" opacity=".16"/>
+  </svg>
+  <svg class="bg-portrait" viewBox="0 0 400 860" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="bgLineP" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#a9d6ea" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#a9d6ea" stop-opacity=".5"/>
+        <stop offset="1" stop-color="#a9d6ea" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="bgSheenP" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#2e7fa0" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#2e7fa0" stop-opacity=".16"/>
+        <stop offset="1" stop-color="#2e7fa0" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="bgSoftP" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="16"/></filter>
+    </defs>
+    <path filter="url(#bgSoftP)" d="M-40 520C80 440 260 400 440 250V330C280 470 120 540-40 600Z" fill="url(#bgSheenP)"/>
+    <path d="M-40 470C110 400 270 360 440 200" fill="none" stroke="url(#bgLineP)" stroke-width="1" opacity=".5"/>
+    <path d="M-40 760C120 700 300 690 440 600" fill="none" stroke="url(#bgLineP)" stroke-width="1" opacity=".22"/>
+    <path d="M250-20C320 60 380 120 440 150" fill="none" stroke="url(#bgLineP)" stroke-width="1" opacity=".35"/>
+  </svg>
+</div>
+<main class="vc">
+  <header class="id">
+    <svg class="eye" viewBox="0 0 200 100" role="img" aria-label="Nicolas Amzallag">
+      <defs>
+        <linearGradient id="eyeRim" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#7cc4dc"/>
+          <stop offset=".45" stop-color="#c4e3ee"/>
+          <stop offset=".78" stop-color="#e3d6b8"/>
+          <stop offset="1" stop-color="#cdb07c"/>
+        </linearGradient>
+        <radialGradient id="eyeHalo" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#4fc2e2" stop-opacity=".16"/>
+          <stop offset=".55" stop-color="#4fc2e2" stop-opacity=".05"/>
+          <stop offset="1" stop-color="#4fc2e2" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="eyeWhite" cx=".5" cy=".5" r=".55">
+          <stop offset="0" stop-color="#143247"/>
+          <stop offset=".55" stop-color="#0c1c2a"/>
+          <stop offset="1" stop-color="#060b12"/>
+        </radialGradient>
+        <radialGradient id="eyeIris" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#0b4d68"/>
+          <stop offset=".42" stop-color="#1aa9cf"/>
+          <stop offset=".62" stop-color="#5fd6ee"/>
+          <stop offset=".82" stop-color="#1b8fb8"/>
+          <stop offset="1" stop-color="#062c44"/>
+        </radialGradient>
+        <radialGradient id="eyeDepth" cx=".5" cy=".5" r=".5">
+          <stop offset=".45" stop-color="#021018" stop-opacity="0"/>
+          <stop offset=".88" stop-color="#021018" stop-opacity=".35"/>
+          <stop offset="1" stop-color="#021018" stop-opacity=".85"/>
+        </radialGradient>
+        <radialGradient id="eyePupil" cx=".42" cy=".38" r=".7">
+          <stop offset="0" stop-color="#0b1a24"/>
+          <stop offset=".7" stop-color="#03070b"/>
+          <stop offset="1" stop-color="#010305"/>
+        </radialGradient>
+        <linearGradient id="eyeGloss" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity=".22"/>
+          <stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="eyeShade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#02060a" stop-opacity=".7"/>
+          <stop offset=".38" stop-color="#02060a" stop-opacity="0"/>
+          <stop offset=".86" stop-color="#02060a" stop-opacity="0"/>
+          <stop offset="1" stop-color="#02060a" stop-opacity=".35"/>
+        </linearGradient>
+        <radialGradient id="eyeSpec" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#fff" stop-opacity=".95"/>
+          <stop offset=".6" stop-color="#fff" stop-opacity=".5"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="eyeClip"><path d="M10 50C53 11 147 11 190 50 147 89 53 89 10 50Z"/></clipPath>
+      </defs>
+      <ellipse class="halo" cx="100" cy="50" rx="98" ry="46" fill="url(#eyeHalo)"/>
+      <g class="lid">
+        <path d="M10 50C53 11 147 11 190 50 147 89 53 89 10 50Z" fill="url(#eyeWhite)"/>
+        <g clip-path="url(#eyeClip)">
+          <g class="iris">
+            <circle cx="100" cy="50" r="28" fill="url(#eyeIris)"/>
+            <path d="M112.8 49.9L123.8 48.5M113.0 50.9L127.0 51.9M113.1 51.4L127.0 51.5M113.3 52.6L126.4 54.2M113.2 53.7L123.4 56.2M111.9 54.4L121.5 57.4M111.9 54.6L123.6 60.2M112.0 55.7L121.8 59.8M111.0 56.4L123.9 62.8M110.8 57.4L121.0 64.7M110.3 57.9L118.0 64.4M110.1 58.6L117.9 66.7M109.0 59.3L116.1 65.1M109.0 60.1L117.6 69.9M108.4 60.4L114.5 68.1M107.0 60.9L112.4 70.0M106.5 61.4L110.2 70.4M105.9 62.0L111.4 74.5M105.2 62.8L109.1 71.0M104.4 62.7L109.1 75.7M103.5 62.2L106.7 76.2M102.8 62.6L104.4 74.9M102.0 63.0L102.7 74.2M100.6 63.6L101.5 75.8M100.1 63.7L101.1 72.1M99.4 62.9L98.8 76.1M98.2 62.8L96.5 77.2M97.5 63.0L95.4 71.7M96.5 62.9L95.1 73.2M95.3 62.7L91.5 70.9M95.1 62.1L89.5 74.7M94.7 61.5L90.0 74.3M93.8 61.0L87.5 74.4M93.0 61.0L84.4 72.3M92.2 60.1L84.4 70.8M91.7 59.7L84.2 66.3M90.7 59.3L81.9 70.0M90.4 58.6L83.6 65.9M89.3 58.7L81.7 66.3M89.5 57.0L78.9 62.4M88.2 56.5L77.4 62.9M88.0 56.2L77.9 60.5M88.2 55.0L78.4 57.8M87.1 54.1L78.0 56.3M87.3 53.6L76.0 58.4M87.4 52.9L74.6 55.2M86.9 51.4L77.8 51.0M87.0 50.5L73.9 51.9M87.2 50.2L76.0 49.3M86.9 48.9L76.4 47.1M86.7 48.6L77.8 46.9M87.1 47.2L74.4 43.6M86.9 46.6L78.6 44.8M87.0 45.7L77.5 43.5M88.1 45.4L79.4 41.1M87.7 44.2L80.2 40.3M88.5 43.5L76.1 38.2M89.1 42.3L80.8 34.8M89.1 41.7L81.3 36.8M90.1 41.6L80.3 32.9M90.6 40.9L81.8 30.5M91.2 40.2L84.8 31.2M91.6 39.2L85.0 30.5M93.0 39.5L85.4 29.8M92.9 38.5L86.0 27.5M94.3 38.0L89.0 26.9M94.9 37.5L90.0 25.1M95.7 37.8L92.2 28.2M96.6 36.9L94.1 28.4M97.5 37.0L95.9 25.8M98.2 36.9L98.0 25.3M99.3 36.4L98.2 27.9M100.0 36.3L99.1 27.2M100.6 36.9L100.3 23.0M101.4 36.7L103.5 27.2M102.4 36.7L103.1 26.4M103.9 36.8L108.7 25.3M104.2 37.5L107.8 29.5M104.8 37.8L108.5 27.0M105.5 38.3L108.7 28.3M106.6 38.7L113.2 26.1M107.4 39.1L116.5 28.5M108.6 39.2L116.1 28.5M108.6 39.6L115.6 29.3M109.6 40.3L115.6 33.3M110.1 40.8L118.3 34.1M109.9 42.0L118.2 35.0M111.2 42.1L120.0 36.9M111.6 42.9L123.7 36.9M111.6 44.2L122.3 40.3M111.7 45.0L122.2 39.6M112.0 45.6L125.1 39.8M112.5 46.5L122.2 43.2M112.6 47.5L124.7 43.6M112.5 48.2L123.1 46.7M113.1 48.9L122.1 47.1" stroke="#bff4ff" stroke-width=".42" stroke-linecap="round" opacity=".38"/>
+            <path d="M114.0 50.4L124.8 51.8M114.1 51.2L123.6 53.5M114.3 52.6L123.3 54.6M113.4 53.9L126.5 56.5M113.5 54.9L125.0 58.0M113.1 56.3L120.3 60.3M111.6 57.4L122.0 63.9M111.1 58.5L119.9 67.0M109.5 60.5L116.6 70.4M109.0 60.6L118.2 70.7M107.9 61.7L114.8 72.0M107.1 61.8L114.2 73.1M105.7 62.2L111.8 73.1M104.0 63.6L106.2 72.6M102.5 64.3L104.9 75.0M100.7 63.7L100.8 73.6M100.7 64.5L100.7 72.7M98.2 64.4L96.7 76.6M97.2 64.2L94.6 72.5M95.7 63.9L92.4 72.6M95.2 62.6L90.8 75.2M93.7 63.1L89.0 71.9M91.9 61.8L87.1 71.3M90.5 60.9L83.6 68.7M90.2 59.4L83.6 66.9M89.7 59.2L83.0 66.3M87.6 57.9L79.2 63.6M87.4 56.8L79.2 60.8M87.4 55.0L75.4 60.6M86.6 53.7L76.8 57.9M86.6 53.3L76.7 55.2M86.2 51.1L75.3 52.1M86.4 50.0L77.3 50.9M85.5 47.9L72.8 46.1M85.7 46.7L75.4 45.0M85.9 46.2L74.6 42.8M86.8 45.1L78.7 43.1M87.8 43.0L80.6 38.2M87.7 42.2L78.2 37.9M88.7 41.6L79.5 35.5M89.8 40.5L81.8 31.6M90.3 39.3L83.8 33.7M92.5 37.7L87.8 31.0M93.3 37.8L89.5 30.5M94.5 37.1L88.4 26.6M95.2 36.3L92.8 25.0M97.0 36.5L93.7 26.0M98.4 35.4L98.3 27.3M100.2 35.4L100.4 27.6M101.6 36.5L102.7 26.6M103.1 36.1L104.3 24.3M104.5 37.1L107.8 26.3M105.2 36.6L107.5 29.1M106.7 37.9L111.6 28.4M107.2 38.4L115.0 28.2M108.7 39.4L115.4 33.4M109.6 40.3L117.7 30.2M110.4 41.2L119.6 32.4M112.2 42.0L119.5 36.9M112.4 43.2L122.2 37.3M112.5 44.2L119.7 39.7M113.6 45.9L121.6 42.6M113.5 47.0L124.8 44.3M114.5 49.2L122.7 47.5" stroke="#03202f" stroke-width=".55" stroke-linecap="round" opacity=".4"/>
+            <circle cx="100" cy="50" r="28" fill="url(#eyeDepth)"/>
+            <circle cx="100" cy="50" r="15.2" fill="none" stroke="#e6d3a6" stroke-width=".7" stroke-dasharray="1.1 .9" opacity=".45"/>
+            <circle cx="100" cy="50" r="27.4" fill="none" stroke="#021722" stroke-width="1.3" opacity=".9"/>
+            <circle class="pupil" cx="100" cy="50" r="10.2" fill="url(#eyePupil)"/>
+            <circle cx="100" cy="50" r="10.2" fill="none" stroke="#04131c" stroke-width=".8"/>
+            <ellipse cx="100" cy="40" rx="22" ry="12" fill="url(#eyeGloss)"/>
+            <circle class="spec" cx="106.6" cy="44.2" r="2.3" fill="url(#eyeSpec)"/>
+            <circle class="spec" cx="93.6" cy="56.4" r=".9" fill="#fff" opacity=".3"/>
+          </g>
+          <rect x="10" y="11" width="180" height="78" fill="url(#eyeShade)"/>
+        </g>
+        <path d="M10 50C53 11 147 11 190 50 147 89 53 89 10 50Z" fill="none" stroke="url(#eyeRim)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M17 50C57 16.5 143 16.5 183 50 143 83.5 57 83.5 17 50Z" fill="none" stroke="#c4e3ee" stroke-width=".3" opacity=".12"/>
+      </g>
+    </svg>
+    <h1 class="name rise">Nicolas Amzallag</h1>
+    <p class="title rise">Business Developer &amp; Partenariats</p>
+    <p class="sub rise">Événementiel&nbsp;· Culture<span class="sep-mid">&nbsp;·</span><br class="br-m"> SaaS&nbsp;· IA&nbsp;appliquée</p>
+  </header>
+
+  <section class="side rise" aria-label="Coordonnées">
+    <ul class="contacts">
+      <li><a class="row" href="tel:+33642935480">
+        <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 4h2.9l1.6 4-2 1.3a10.2 10.2 0 0 0 4.6 4.6L15 11.9l4 1.6v2.9A2.6 2.6 0 0 1 16.4 19 12.9 12.9 0 0 1 5 7.6 2.6 2.6 0 0 1 6.6 4Z"/></svg></span>
+        <span class="tx"><span class="lbl">Téléphone</span><span class="val">06 42 93 54 80</span></span>
+        <svg class="i go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg>
+      </a></li>
+      <li><a class="row" id="vcMail" href="nicolas-amzallag.vcf">
+        <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3.2"/><path d="M4.2 8.4 12 13.6l7.8-5.2"/></svg></span>
+        <span class="tx"><span class="lbl">Email</span><span class="val" id="vcMailVal"></span></span>
+        <svg class="i go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg>
+      </a></li>
+      <li><a class="row" href="https://www.linkedin.com/in/nicolas-amzallag" target="_blank" rel="noopener">
+        <span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="3.2"/><path d="M9 7.5V6.2A2.2 2.2 0 0 1 11.2 4h1.6A2.2 2.2 0 0 1 15 6.2v1.3M3 13h18"/></svg></span>
+        <span class="tx"><span class="lbl">LinkedIn</span><span class="val">linkedin.com/in/nicolas-amzallag</span></span>
+        <svg class="i go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg>
+      </a></li>
+    </ul>
+
+    <div class="actions">
+      <a class="cta-btn" href="nicolas-amzallag.vcf" download="nicolas-amzallag.vcf" type="text/vcard"><span class="btnl"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8.5" r="3.6"/><path d="M3.5 19.5a6.5 6.5 0 0 1 13 0M18.5 8v6M15.5 11h6"/></svg>Ajouter à mes contacts</span></a>
+      <a class="cta-btn2" href="../"><span class="btnl">Voir mon profil<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13.5M13 6.5l5.5 5.5-5.5 5.5"/></svg></span></a>
+    </div>
+
+    <figure class="qr"><img src="qr.svg" width="45" height="45" alt="QR code — v-card Nicolas Amzallag"></figure>
+  </section>
+</main>
+<script>
+/* Email reconstitué au chargement, même logique que le profil digital. */
+(function(){
+  var eu='nicolas_amzallag', ed='yahoo.fr', em=eu+'@'+ed;
+  var a=document.getElementById('vcMail'), v=document.getElementById('vcMailVal');
+  if(a&&v){a.href='mailto:'+em;v.textContent=em;}
+})();
+</script>
+</body>
+</html>

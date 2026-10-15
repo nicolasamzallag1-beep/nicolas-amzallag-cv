@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Amzallag;Nicolas;;;
+FN:Nicolas Amzallag
+TITLE:Business Developer & Partenariats
+TEL;TYPE=CELL,VOICE:+33 6 42 93 54 80
+EMAIL;TYPE=INTERNET,PREF:nicolas_amzallag@yahoo.fr
+item1.URL:https://www.linkedin.com/in/nicolas-amzallag
+item1.X-ABLabel:LinkedIn
+item2.URL:https://nicolasamzallag1-beep.github.io/nicolas-amzallag-cv/
+item2.X-ABLabel:Profil digital
+END:VCARD
