@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Nicolas Amzallag — Business Developer &amp; Partenariats</title>
 <meta name="description" content="Business Developer &amp; Partenariats — Événementiel · Culture · SaaS · IA appliquée">
-<meta name="theme-color" content="#0a1018">
+<meta name="theme-color" content="#151a22">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Nicolas Amzallag — Business Developer &amp; Partenariats">
 <meta property="og:description" content="Événementiel · Culture · SaaS · IA appliquée">
@@ -15,34 +15,32 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%23d6ecf5' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='32' height='32' rx='8' fill='%230a1018' stroke='none'/%3E%3Cpath d='M2.5 16C7.5 8.6 24.5 8.6 29.5 16 24.5 23.4 7.5 23.4 2.5 16Z'/%3E%3Ccircle cx='16' cy='16' r='5.2'/%3E%3Ccircle cx='16' cy='16' r='2.2' fill='%23d6ecf5' stroke='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* V-card — page autonome. Palette, typographies, œil et boutons repris du profil digital. */
+/* V-card — page autonome. Palette, typographies, œil et boutons repris du profil digital ; ambiance de la pré-home Jobflow Studio. */
 :root{
-  --bg:#0a1018; --bg2:#0e1722;
-  --ink:#f1f5f8; --text:#dbe4ea; --muted:#b3c2cd;
-  --ice:#a9d6ea; --ice2:#d6ecf5; --slate:#b9c5e6;
-  --line:rgba(255,255,255,0.09); --line2:rgba(255,255,255,0.16);
+  --bg:#0c1017;
+  --ink:#ebe8df; --text:#d4d7dc; --muted:#a2a8b2;
+  --ice:#b6c2d0; --title:#b4c3d4; --icon:#cdbb92;
+  --line:rgba(222,226,234,0.10); --line2:rgba(222,226,234,0.20);
   --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --ease:cubic-bezier(.22,.7,.12,1);
+  --gx:50%; --gy:16%;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{background:var(--bg);-webkit-text-size-adjust:100%;}
+html{background:var(--bg);-webkit-text-size-adjust:100%;overflow-x:hidden;overflow-x:clip;}
 body{
-  min-height:100vh;min-height:100svh;
+  min-height:100vh;min-height:100svh;overflow-x:clip;
   font-family:'Geist',system-ui,sans-serif;font-size:15px;color:var(--text);
   -webkit-font-smoothing:antialiased;
   display:flex;align-items:center;justify-content:center;
-  padding:max(40px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(40px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left));
+  padding:max(44px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(44px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left));
 }
-/* ── FOND : ardoise, courbes fines et reflet soyeux repris du bandeau du profil ── */
+/* ── FOND : ardoise / anthracite bleuté, dégradé sec, deux grandes courbes très discrètes ── */
 .bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
-  background:
-    radial-gradient(120% 80% at 0% 0%,rgba(46,128,160,0.16),transparent 55%),
-    radial-gradient(90% 70% at 100% 100%,rgba(38,98,130,0.12),transparent 60%),
-    linear-gradient(180deg,#0b131c 0%,#0a1018 55%,#080d14 100%);}
+  background:linear-gradient(165deg,#1b212b 0%,#151a23 36%,#10141c 68%,#0b0e15 100%);}
 .bg svg{position:absolute;inset:0;width:100%;height:100%;}
-.bg::after{content:"";position:absolute;inset:0;opacity:.07;mix-blend-mode:soft-light;
+.bg::after{content:"";position:absolute;inset:0;opacity:.035;mix-blend-mode:soft-light;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");}
 .bg-portrait{display:none;}
 @media (max-aspect-ratio:1/1){.bg-landscape{display:none;}.bg-portrait{display:block;}}
@@ -54,55 +52,63 @@ svg.i{width:18px;height:18px;flex-shrink:0;display:block;}
 
 /* ── IDENTITÉ ── */
 .id{display:flex;flex-direction:column;align-items:center;text-align:center;}
-.eye{width:212px;height:106px;display:block;overflow:visible;margin-bottom:34px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.32));}
-.name{font-size:clamp(34px,10vw,44px);font-weight:300;letter-spacing:-0.035em;line-height:1.02;color:var(--ink);}
-.title{margin-top:14px;font-size:16px;font-weight:500;letter-spacing:-0.005em;color:var(--ice);}
-.sub{margin-top:12px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);line-height:1.8;}
+.eye-wrap{position:relative;width:256px;height:128px;margin-bottom:48px;}
+.eye{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 16px 22px rgba(1,4,12,.5));}
+.name{font-size:clamp(32px,9.4vw,41px);font-weight:200;letter-spacing:-0.03em;line-height:1.08;color:var(--ink);
+  background:linear-gradient(100deg,#ebe8df 0%,#ebe8df 60%,#e4dccb 82%,#ddcca6 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.title{margin-top:18px;font-size:15px;font-weight:400;letter-spacing:0.01em;color:var(--title);}
+.sub{margin-top:16px;font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);line-height:1.8;}
 .sub .sep-mid{display:none;}
 
 /* ── COORDONNÉES ── */
-.side{margin-top:44px;}
-.contacts{list-style:none;border-top:1px solid var(--line);}
-.contacts li{border-bottom:1px solid var(--line);}
-.row{display:flex;align-items:center;gap:16px;min-height:64px;padding:12px 2px;transition:background .3s;}
-.row .ic{color:var(--ice);}
+.side{margin-top:60px;}
+.contacts{list-style:none;padding:2px 18px;border-radius:20px;
+  background:linear-gradient(180deg,rgba(226,228,234,0.04),rgba(226,228,234,0.012));
+  border:1px solid rgba(222,226,234,0.10);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.contacts li+li{border-top:1px solid var(--line);}
+.contacts{box-shadow:inset 0 1px 0 rgba(226,212,178,0.12),0 24px 48px -32px rgba(0,0,0,0.6);}
+.row{display:flex;align-items:center;gap:16px;min-height:62px;padding:13px 0;}
+.row .ic{color:var(--icon);}
+.row .ic svg.i{width:17px;height:17px;}
 .row .tx{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1;}
-.row .lbl{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);}
-.row .val{font-size:15px;font-weight:400;color:var(--ink);overflow-wrap:anywhere;}
-.row .go{color:var(--muted);opacity:.55;transition:opacity .3s,transform .3s var(--ease);}
+.row .lbl{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
+.row .val{font-size:14.5px;font-weight:300;letter-spacing:0.005em;color:var(--ink);overflow-wrap:anywhere;}
+.row .go{color:var(--ice);opacity:.35;transition:opacity .3s,transform .3s var(--ease);}
 .row:hover .go,.row:focus-visible .go{opacity:1;transform:translate(2px,-2px);}
-.row:hover{background:rgba(255,255,255,0.025);}
 
 /* ── ACTIONS (boutons du profil digital) ── */
-.actions{display:flex;flex-direction:column;gap:12px;margin-top:32px;}
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:36px;}
 .btnl{display:inline-flex;align-items:center;gap:10px;}
-.cta-btn,.cta-btn2{display:inline-flex;align-items:center;justify-content:center;font-family:inherit;font-size:14.5px;font-weight:600;border-radius:999px;padding:15px 28px;transition:transform .25s,background .25s,border-color .25s;}
-.cta-btn{background:#eef4f8;color:#08111a;box-shadow:0 12px 30px -14px rgba(0,0,0,0.7);}
-.cta-btn:hover{background:#fff;transform:translateY(-1px);}
-.cta-btn2{background:transparent;color:#fff;border:1px solid var(--line2);}
-.cta-btn2:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.32);transform:translateY(-1px);}
+.btnl svg.i{width:16px;height:16px;}
+.cta-btn,.cta-btn2{display:inline-flex;align-items:center;justify-content:center;font-family:inherit;font-size:13.5px;font-weight:500;letter-spacing:0.02em;border-radius:999px;padding:13px 24px;transition:transform .25s,background .25s,border-color .25s,box-shadow .25s;}
+.cta-btn{background:#eeebe3;color:#111a27;box-shadow:0 14px 30px -18px rgba(0,0,0,0.7);}
+.cta-btn:hover{background:#f6f4ef;transform:translateY(-1px);}
+.cta-btn2{background:rgba(16,26,42,0.55);color:var(--ink);border:1px solid rgba(205,214,228,0.24);}
+.cta-btn2:hover{background:rgba(22,34,54,0.7);border-color:rgba(205,214,228,0.42);transform:translateY(-1px);}
 a:focus-visible{outline:1px solid var(--ice);outline-offset:3px;border-radius:12px;}
 .cta-btn:focus-visible,.cta-btn2:focus-visible{border-radius:999px;}
 
 /* ── QR CODE ── */
-.qr{margin:40px auto 0;width:128px;padding:10px;border-radius:16px;background:#f1f5f8;border:1px solid var(--line2);}
+.qr{margin:52px auto 0;width:128px;padding:10px;border-radius:16px;background:#f1f5f8;border:1px solid var(--line2);}
 .qr img{display:block;width:100%;height:auto;}
 
 /* ── DESKTOP ── */
 @media (min-width:880px){
+  :root{--gx:27%;--gy:38%;}
   body{padding:64px 48px;}
-  .vc{max-width:980px;display:grid;grid-template-columns:1.1fr 1px .9fr;gap:0 72px;align-items:center;}
-  .vc::before{content:"";grid-column:2;grid-row:1;align-self:stretch;background:var(--line);}
+  .vc{max-width:1000px;display:grid;grid-template-columns:1.1fr 1px .9fr;gap:0 88px;align-items:center;}
+  .vc::before{content:"";grid-column:2;grid-row:1;align-self:stretch;
+    background:linear-gradient(180deg,transparent,rgba(222,226,234,0.12) 20%,rgba(226,212,178,0.22) 50%,rgba(222,226,234,0.12) 80%,transparent);}
   .id{grid-column:1;grid-row:1;align-items:flex-start;text-align:left;}
-  .eye{width:344px;height:172px;margin:0 0 44px -18px;}
-  .name{font-size:62px;}
-  .title{margin-top:20px;font-size:18px;}
-  .sub{margin-top:16px;font-size:12px;}
+  .eye-wrap{width:392px;height:196px;margin:0 0 56px -52px;}
+  .name{font-size:58px;}
+  .title{margin-top:24px;font-size:16.5px;}
+  .sub{margin-top:18px;font-size:11px;}
   .sub .sep-mid{display:inline;}
   .sub .br-m{display:none;}
   .side{grid-column:3;grid-row:1;margin-top:0;}
-  .actions{margin-top:28px;}
-  .qr{margin:36px 0 0 auto;width:112px;}
+  .actions{margin-top:36px;}
+  .qr{margin:44px 0 0 auto;width:112px;}
 }
 
 /* ── OUVERTURE DE L'ŒIL (une seule fois) ── */
@@ -130,75 +136,85 @@ a:focus-visible{outline:1px solid var(--ice);outline-offset:3px;border-radius:12
 <div class="bg" aria-hidden="true">
   <svg class="bg-landscape" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
     <defs>
-      <linearGradient id="bgLine" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#a9d6ea" stop-opacity="0"/>
-        <stop offset=".5" stop-color="#a9d6ea" stop-opacity=".55"/>
-        <stop offset="1" stop-color="#a9d6ea" stop-opacity="0"/>
+      <linearGradient id="bg-landscapeA" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#9aa3b4" stop-opacity=".055"/>
+        <stop offset="1" stop-color="#9aa3b4" stop-opacity="0"/>
       </linearGradient>
-      <linearGradient id="bgSheen" x1="0" y1="1" x2="1" y2="0">
-        <stop offset="0" stop-color="#2e7fa0" stop-opacity="0"/>
-        <stop offset=".55" stop-color="#2e7fa0" stop-opacity=".14"/>
-        <stop offset="1" stop-color="#2e7fa0" stop-opacity="0"/>
+      <linearGradient id="bg-landscapeB" x1="1" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#9aa3b4" stop-opacity=".05"/>
+        <stop offset="1" stop-color="#9aa3b4" stop-opacity="0"/>
       </linearGradient>
-      <filter id="bgSoft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="28"/></filter>
+      <linearGradient id="bg-landscapeE" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#e2d6bc" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#e2d6bc" stop-opacity=".14"/>
+        <stop offset="1" stop-color="#e2d6bc" stop-opacity="0"/>
+      </linearGradient>
     </defs>
-    <path filter="url(#bgSoft)" d="M-80 900C300 720 760 760 1520 420V560C980 780 420 860-80 980Z" fill="url(#bgSheen)"/>
-    <path d="M-80 690C360 560 820 690 1520 330" fill="none" stroke="url(#bgLine)" stroke-width="1" opacity=".55"/>
-    <path d="M-80 760C420 640 900 720 1520 460" fill="none" stroke="url(#bgLine)" stroke-width="1" opacity=".22"/>
-    <path d="M1040-40C1180 180 1320 360 1520 470" fill="none" stroke="url(#bgLine)" stroke-width="1" opacity=".4"/>
-    <path d="M620-40C820 140 1040 230 1520 180" fill="none" stroke="url(#bgLine)" stroke-width="1" opacity=".16"/>
+    <path d="M0 420C180 300 300 120 380 0L0 0Z" fill="url(#bg-landscapeA)"/>
+    <path d="M0 420C180 300 300 120 380 0" fill="none" stroke="url(#bg-landscapeE)" stroke-width=".8"/>
+    <path d="M1440 470C1260 620 1150 780 1090 900L1440 900Z" fill="url(#bg-landscapeB)"/>
+    <path d="M1440 470C1260 620 1150 780 1090 900" fill="none" stroke="url(#bg-landscapeE)" stroke-width=".8"/>
   </svg>
   <svg class="bg-portrait" viewBox="0 0 400 860" preserveAspectRatio="xMidYMid slice">
     <defs>
-      <linearGradient id="bgLineP" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#a9d6ea" stop-opacity="0"/>
-        <stop offset=".5" stop-color="#a9d6ea" stop-opacity=".5"/>
-        <stop offset="1" stop-color="#a9d6ea" stop-opacity="0"/>
+      <linearGradient id="bg-portraitA" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#9aa3b4" stop-opacity=".055"/>
+        <stop offset="1" stop-color="#9aa3b4" stop-opacity="0"/>
       </linearGradient>
-      <linearGradient id="bgSheenP" x1="0" y1="1" x2="1" y2="0">
-        <stop offset="0" stop-color="#2e7fa0" stop-opacity="0"/>
-        <stop offset=".5" stop-color="#2e7fa0" stop-opacity=".16"/>
-        <stop offset="1" stop-color="#2e7fa0" stop-opacity="0"/>
+      <linearGradient id="bg-portraitB" x1="1" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#9aa3b4" stop-opacity=".05"/>
+        <stop offset="1" stop-color="#9aa3b4" stop-opacity="0"/>
       </linearGradient>
-      <filter id="bgSoftP" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="16"/></filter>
+      <linearGradient id="bg-portraitE" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#e2d6bc" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#e2d6bc" stop-opacity=".14"/>
+        <stop offset="1" stop-color="#e2d6bc" stop-opacity="0"/>
+      </linearGradient>
     </defs>
-    <path filter="url(#bgSoftP)" d="M-40 520C80 440 260 400 440 250V330C280 470 120 540-40 600Z" fill="url(#bgSheenP)"/>
-    <path d="M-40 470C110 400 270 360 440 200" fill="none" stroke="url(#bgLineP)" stroke-width="1" opacity=".5"/>
-    <path d="M-40 760C120 700 300 690 440 600" fill="none" stroke="url(#bgLineP)" stroke-width="1" opacity=".22"/>
-    <path d="M250-20C320 60 380 120 440 150" fill="none" stroke="url(#bgLineP)" stroke-width="1" opacity=".35"/>
+    <path d="M0 300C70 230 130 110 160 0L0 0Z" fill="url(#bg-portraitA)"/>
+    <path d="M0 300C70 230 130 110 160 0" fill="none" stroke="url(#bg-portraitE)" stroke-width=".8"/>
+    <path d="M400 620C330 690 290 780 270 860L400 860Z" fill="url(#bg-portraitB)"/>
+    <path d="M400 620C330 690 290 780 270 860" fill="none" stroke="url(#bg-portraitE)" stroke-width=".8"/>
   </svg>
 </div>
 <main class="vc">
   <header class="id">
+    <div class="eye-wrap">
     <svg class="eye" viewBox="0 0 200 100" role="img" aria-label="Nicolas Amzallag">
       <defs>
         <linearGradient id="eyeRim" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#7cc4dc"/>
-          <stop offset=".45" stop-color="#c4e3ee"/>
-          <stop offset=".78" stop-color="#e3d6b8"/>
-          <stop offset="1" stop-color="#cdb07c"/>
+          <stop offset="0" stop-color="#7fdcf6"/>
+          <stop offset=".38" stop-color="#bfe8f6"/>
+          <stop offset=".72" stop-color="#ecdfbd"/>
+          <stop offset="1" stop-color="#d9c08c"/>
         </linearGradient>
+        <linearGradient id="eyeRimGlow" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#4fcaf2"/>
+          <stop offset=".55" stop-color="#8fd8f0"/>
+          <stop offset="1" stop-color="#d8b874"/>
+        </linearGradient>
+        <filter id="eyeGlow" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur stdDeviation="2.4"/></filter>
         <radialGradient id="eyeHalo" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#4fc2e2" stop-opacity=".16"/>
-          <stop offset=".55" stop-color="#4fc2e2" stop-opacity=".05"/>
-          <stop offset="1" stop-color="#4fc2e2" stop-opacity="0"/>
+          <stop offset="0" stop-color="#58a8e6" stop-opacity=".12"/>
+          <stop offset=".5" stop-color="#58a8e6" stop-opacity=".03"/>
+          <stop offset="1" stop-color="#3fbfdf" stop-opacity="0"/>
         </radialGradient>
         <radialGradient id="eyeWhite" cx=".5" cy=".5" r=".55">
-          <stop offset="0" stop-color="#143247"/>
-          <stop offset=".55" stop-color="#0c1c2a"/>
-          <stop offset="1" stop-color="#060b12"/>
+          <stop offset="0" stop-color="#142336"/>
+          <stop offset=".55" stop-color="#0c1522"/>
+          <stop offset="1" stop-color="#060a10"/>
         </radialGradient>
         <radialGradient id="eyeIris" cx=".5" cy=".5" r=".5">
           <stop offset="0" stop-color="#0b4d68"/>
-          <stop offset=".42" stop-color="#1aa9cf"/>
-          <stop offset=".62" stop-color="#5fd6ee"/>
-          <stop offset=".82" stop-color="#1b8fb8"/>
-          <stop offset="1" stop-color="#062c44"/>
+          <stop offset=".38" stop-color="#2ab8e8"/>
+          <stop offset=".62" stop-color="#9aeaff"/>
+          <stop offset=".84" stop-color="#2496d0"/>
+          <stop offset="1" stop-color="#08294d"/>
         </radialGradient>
         <radialGradient id="eyeDepth" cx=".5" cy=".5" r=".5">
           <stop offset=".45" stop-color="#021018" stop-opacity="0"/>
-          <stop offset=".88" stop-color="#021018" stop-opacity=".35"/>
-          <stop offset="1" stop-color="#021018" stop-opacity=".85"/>
+          <stop offset=".88" stop-color="#021018" stop-opacity=".3"/>
+          <stop offset="1" stop-color="#021018" stop-opacity=".75"/>
         </radialGradient>
         <radialGradient id="eyePupil" cx=".42" cy=".38" r=".7">
           <stop offset="0" stop-color="#0b1a24"/>
@@ -206,45 +222,49 @@ a:focus-visible{outline:1px solid var(--ice);outline-offset:3px;border-radius:12
           <stop offset="1" stop-color="#010305"/>
         </radialGradient>
         <linearGradient id="eyeGloss" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#fff" stop-opacity=".22"/>
+          <stop offset="0" stop-color="#fff" stop-opacity=".27"/>
           <stop offset=".5" stop-color="#fff" stop-opacity="0"/>
         </linearGradient>
         <linearGradient id="eyeShade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#02060a" stop-opacity=".7"/>
-          <stop offset=".38" stop-color="#02060a" stop-opacity="0"/>
+          <stop offset="0" stop-color="#02060a" stop-opacity=".6"/>
+          <stop offset=".36" stop-color="#02060a" stop-opacity="0"/>
           <stop offset=".86" stop-color="#02060a" stop-opacity="0"/>
-          <stop offset="1" stop-color="#02060a" stop-opacity=".35"/>
+          <stop offset="1" stop-color="#02060a" stop-opacity=".3"/>
         </linearGradient>
         <radialGradient id="eyeSpec" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#fff" stop-opacity=".95"/>
-          <stop offset=".6" stop-color="#fff" stop-opacity=".5"/>
+          <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+          <stop offset=".6" stop-color="#fff" stop-opacity=".62"/>
           <stop offset="1" stop-color="#fff" stop-opacity="0"/>
         </radialGradient>
-        <clipPath id="eyeClip"><path d="M10 50C53 11 147 11 190 50 147 89 53 89 10 50Z"/></clipPath>
+        <clipPath id="eyeClip"><path d="M27 50C63 10 137 10 173 50 137 90 63 90 27 50Z"/></clipPath>
+        <clipPath id="irisClip"><circle cx="100" cy="50" r="27"/></clipPath>
       </defs>
-      <ellipse class="halo" cx="100" cy="50" rx="98" ry="46" fill="url(#eyeHalo)"/>
+      <ellipse class="halo" cx="100" cy="50" rx="80" ry="46" fill="url(#eyeHalo)"/>
       <g class="lid">
-        <path d="M10 50C53 11 147 11 190 50 147 89 53 89 10 50Z" fill="url(#eyeWhite)"/>
+        <path d="M27 50C63 10 137 10 173 50 137 90 63 90 27 50Z" fill="url(#eyeWhite)"/>
         <g clip-path="url(#eyeClip)">
           <g class="iris">
-            <circle cx="100" cy="50" r="28" fill="url(#eyeIris)"/>
-            <path d="M112.8 49.9L123.8 48.5M113.0 50.9L127.0 51.9M113.1 51.4L127.0 51.5M113.3 52.6L126.4 54.2M113.2 53.7L123.4 56.2M111.9 54.4L121.5 57.4M111.9 54.6L123.6 60.2M112.0 55.7L121.8 59.8M111.0 56.4L123.9 62.8M110.8 57.4L121.0 64.7M110.3 57.9L118.0 64.4M110.1 58.6L117.9 66.7M109.0 59.3L116.1 65.1M109.0 60.1L117.6 69.9M108.4 60.4L114.5 68.1M107.0 60.9L112.4 70.0M106.5 61.4L110.2 70.4M105.9 62.0L111.4 74.5M105.2 62.8L109.1 71.0M104.4 62.7L109.1 75.7M103.5 62.2L106.7 76.2M102.8 62.6L104.4 74.9M102.0 63.0L102.7 74.2M100.6 63.6L101.5 75.8M100.1 63.7L101.1 72.1M99.4 62.9L98.8 76.1M98.2 62.8L96.5 77.2M97.5 63.0L95.4 71.7M96.5 62.9L95.1 73.2M95.3 62.7L91.5 70.9M95.1 62.1L89.5 74.7M94.7 61.5L90.0 74.3M93.8 61.0L87.5 74.4M93.0 61.0L84.4 72.3M92.2 60.1L84.4 70.8M91.7 59.7L84.2 66.3M90.7 59.3L81.9 70.0M90.4 58.6L83.6 65.9M89.3 58.7L81.7 66.3M89.5 57.0L78.9 62.4M88.2 56.5L77.4 62.9M88.0 56.2L77.9 60.5M88.2 55.0L78.4 57.8M87.1 54.1L78.0 56.3M87.3 53.6L76.0 58.4M87.4 52.9L74.6 55.2M86.9 51.4L77.8 51.0M87.0 50.5L73.9 51.9M87.2 50.2L76.0 49.3M86.9 48.9L76.4 47.1M86.7 48.6L77.8 46.9M87.1 47.2L74.4 43.6M86.9 46.6L78.6 44.8M87.0 45.7L77.5 43.5M88.1 45.4L79.4 41.1M87.7 44.2L80.2 40.3M88.5 43.5L76.1 38.2M89.1 42.3L80.8 34.8M89.1 41.7L81.3 36.8M90.1 41.6L80.3 32.9M90.6 40.9L81.8 30.5M91.2 40.2L84.8 31.2M91.6 39.2L85.0 30.5M93.0 39.5L85.4 29.8M92.9 38.5L86.0 27.5M94.3 38.0L89.0 26.9M94.9 37.5L90.0 25.1M95.7 37.8L92.2 28.2M96.6 36.9L94.1 28.4M97.5 37.0L95.9 25.8M98.2 36.9L98.0 25.3M99.3 36.4L98.2 27.9M100.0 36.3L99.1 27.2M100.6 36.9L100.3 23.0M101.4 36.7L103.5 27.2M102.4 36.7L103.1 26.4M103.9 36.8L108.7 25.3M104.2 37.5L107.8 29.5M104.8 37.8L108.5 27.0M105.5 38.3L108.7 28.3M106.6 38.7L113.2 26.1M107.4 39.1L116.5 28.5M108.6 39.2L116.1 28.5M108.6 39.6L115.6 29.3M109.6 40.3L115.6 33.3M110.1 40.8L118.3 34.1M109.9 42.0L118.2 35.0M111.2 42.1L120.0 36.9M111.6 42.9L123.7 36.9M111.6 44.2L122.3 40.3M111.7 45.0L122.2 39.6M112.0 45.6L125.1 39.8M112.5 46.5L122.2 43.2M112.6 47.5L124.7 43.6M112.5 48.2L123.1 46.7M113.1 48.9L122.1 47.1" stroke="#bff4ff" stroke-width=".42" stroke-linecap="round" opacity=".38"/>
-            <path d="M114.0 50.4L124.8 51.8M114.1 51.2L123.6 53.5M114.3 52.6L123.3 54.6M113.4 53.9L126.5 56.5M113.5 54.9L125.0 58.0M113.1 56.3L120.3 60.3M111.6 57.4L122.0 63.9M111.1 58.5L119.9 67.0M109.5 60.5L116.6 70.4M109.0 60.6L118.2 70.7M107.9 61.7L114.8 72.0M107.1 61.8L114.2 73.1M105.7 62.2L111.8 73.1M104.0 63.6L106.2 72.6M102.5 64.3L104.9 75.0M100.7 63.7L100.8 73.6M100.7 64.5L100.7 72.7M98.2 64.4L96.7 76.6M97.2 64.2L94.6 72.5M95.7 63.9L92.4 72.6M95.2 62.6L90.8 75.2M93.7 63.1L89.0 71.9M91.9 61.8L87.1 71.3M90.5 60.9L83.6 68.7M90.2 59.4L83.6 66.9M89.7 59.2L83.0 66.3M87.6 57.9L79.2 63.6M87.4 56.8L79.2 60.8M87.4 55.0L75.4 60.6M86.6 53.7L76.8 57.9M86.6 53.3L76.7 55.2M86.2 51.1L75.3 52.1M86.4 50.0L77.3 50.9M85.5 47.9L72.8 46.1M85.7 46.7L75.4 45.0M85.9 46.2L74.6 42.8M86.8 45.1L78.7 43.1M87.8 43.0L80.6 38.2M87.7 42.2L78.2 37.9M88.7 41.6L79.5 35.5M89.8 40.5L81.8 31.6M90.3 39.3L83.8 33.7M92.5 37.7L87.8 31.0M93.3 37.8L89.5 30.5M94.5 37.1L88.4 26.6M95.2 36.3L92.8 25.0M97.0 36.5L93.7 26.0M98.4 35.4L98.3 27.3M100.2 35.4L100.4 27.6M101.6 36.5L102.7 26.6M103.1 36.1L104.3 24.3M104.5 37.1L107.8 26.3M105.2 36.6L107.5 29.1M106.7 37.9L111.6 28.4M107.2 38.4L115.0 28.2M108.7 39.4L115.4 33.4M109.6 40.3L117.7 30.2M110.4 41.2L119.6 32.4M112.2 42.0L119.5 36.9M112.4 43.2L122.2 37.3M112.5 44.2L119.7 39.7M113.6 45.9L121.6 42.6M113.5 47.0L124.8 44.3M114.5 49.2L122.7 47.5" stroke="#03202f" stroke-width=".55" stroke-linecap="round" opacity=".4"/>
-            <circle cx="100" cy="50" r="28" fill="url(#eyeDepth)"/>
-            <circle cx="100" cy="50" r="15.2" fill="none" stroke="#e6d3a6" stroke-width=".7" stroke-dasharray="1.1 .9" opacity=".45"/>
-            <circle cx="100" cy="50" r="27.4" fill="none" stroke="#021722" stroke-width="1.3" opacity=".9"/>
+            <g transform="translate(100 50) scale(1.1) translate(-100 -50)">
+            <circle cx="100" cy="50" r="27" fill="url(#eyeIris)"/>
+            <path d="M112.8 49.9L123.4 48.6M113.0 50.9L126.6 51.8M113.1 51.4L126.6 51.4M113.3 52.6L126.0 54.2M113.2 53.7L123.0 56.1M111.9 54.4L121.1 57.2M111.9 54.6L123.2 60.1M112.0 55.7L121.4 59.7M111.0 56.4L123.5 62.6M110.8 57.4L120.7 64.5M110.3 57.9L117.7 64.2M110.1 58.6L117.6 66.4M109.0 59.3L115.8 64.8M109.0 60.1L117.4 69.6M108.4 60.4L114.2 67.8M107.0 60.9L112.2 69.7M106.5 61.4L110.0 70.0M105.9 62.0L111.3 74.2M105.2 62.8L109.0 70.6M104.4 62.7L108.9 75.3M103.5 62.2L106.6 75.8M102.8 62.6L104.3 74.5M102.0 63.0L102.6 73.8M100.6 63.6L101.4 75.4M100.1 63.7L101.1 71.7M99.4 62.9L98.9 75.7M98.2 62.8L96.6 76.8M97.5 63.0L95.4 71.3M96.5 62.9L95.2 72.8M95.3 62.7L91.6 70.5M95.1 62.1L89.7 74.3M94.7 61.5L90.1 73.9M93.8 61.0L87.7 74.0M93.0 61.0L84.6 72.0M92.2 60.1L84.6 70.5M91.7 59.7L84.4 66.0M90.7 59.3L82.2 69.7M90.4 58.6L83.9 65.6M89.3 58.7L82.0 66.0M89.5 57.0L79.2 62.2M88.2 56.5L77.8 62.7M88.0 56.2L78.3 60.4M88.2 55.0L78.8 57.6M87.1 54.1L78.4 56.2M87.3 53.6L76.3 58.2M87.4 52.9L74.9 55.1M86.9 51.4L78.2 51.0M87.0 50.5L74.3 51.8M87.2 50.2L76.4 49.3M86.9 48.9L76.8 47.2M86.7 48.6L78.2 46.9M87.1 47.2L74.8 43.7M86.9 46.6L79.0 44.9M87.0 45.7L77.9 43.6M88.1 45.4L79.8 41.3M87.7 44.2L80.6 40.5M88.5 43.5L76.4 38.4M89.1 42.3L81.1 35.0M89.1 41.7L81.7 37.0M90.1 41.6L80.6 33.2M90.6 40.9L82.1 30.8M91.2 40.2L85.0 31.5M91.6 39.2L85.2 30.8M93.0 39.5L85.6 30.1M92.9 38.5L86.2 27.9M94.3 38.0L89.2 27.2M94.9 37.5L90.1 25.5M95.7 37.8L92.4 28.6M96.6 36.9L94.2 28.8M97.5 37.0L96.0 26.2M98.2 36.9L98.0 25.7M99.3 36.4L98.2 28.3M100.0 36.3L99.1 27.6M100.6 36.9L100.3 23.4M101.4 36.7L103.5 27.6M102.4 36.7L103.1 26.8M103.9 36.8L108.6 25.7M104.2 37.5L107.6 29.8M104.8 37.8L108.4 27.3M105.5 38.3L108.6 28.6M106.6 38.7L113.1 26.5M107.4 39.1L116.2 28.9M108.6 39.2L115.9 28.9M108.6 39.6L115.4 29.7M109.6 40.3L115.4 33.6M110.1 40.8L118.0 34.3M109.9 42.0L117.9 35.3M111.2 42.1L119.7 37.1M111.6 42.9L123.3 37.1M111.6 44.2L122.0 40.5M111.7 45.0L121.8 39.8M112.0 45.6L124.8 39.9M112.5 46.5L121.8 43.3M112.6 47.5L124.3 43.7M112.5 48.2L122.7 46.8M113.1 48.9L121.7 47.1" stroke="#d4f7ff" stroke-width=".42" stroke-linecap="round" opacity=".5"/>
+            <path d="M114.0 50.4L124.4 51.8M114.1 51.2L123.2 53.4M114.3 52.6L122.9 54.6M113.4 53.9L126.1 56.4M113.5 54.9L124.6 57.9M113.1 56.3L120.0 60.1M111.6 57.4L121.6 63.6M111.1 58.5L119.6 66.8M109.5 60.5L116.3 70.1M109.0 60.6L117.9 70.4M107.9 61.7L114.5 71.7M107.1 61.8L114.0 72.7M105.7 62.2L111.6 72.8M104.0 63.6L106.1 72.3M102.5 64.3L104.9 74.6M100.7 63.7L100.8 73.2M100.7 64.5L100.7 72.3M98.2 64.4L96.7 76.2M97.2 64.2L94.7 72.1M95.7 63.9L92.5 72.2M95.2 62.6L90.9 74.9M93.7 63.1L89.1 71.5M91.9 61.8L87.4 71.0M90.5 60.9L83.9 68.3M90.2 59.4L83.9 66.6M89.7 59.2L83.3 66.1M87.6 57.9L79.5 63.4M87.4 56.8L79.6 60.6M87.4 55.0L75.8 60.5M86.6 53.7L77.2 57.8M86.6 53.3L77.0 55.1M86.2 51.1L75.7 52.1M86.4 50.0L77.7 50.9M85.5 47.9L73.2 46.2M85.7 46.7L75.8 45.1M85.9 46.2L74.9 42.9M86.8 45.1L79.1 43.2M87.8 43.0L80.9 38.4M87.7 42.2L78.5 38.1M88.7 41.6L79.8 35.8M89.8 40.5L82.1 31.9M90.3 39.3L84.1 34.0M92.5 37.7L88.0 31.3M93.3 37.8L89.7 30.9M94.5 37.1L88.6 27.0M95.2 36.3L92.9 25.4M97.0 36.5L93.8 26.4M98.4 35.4L98.4 27.7M100.2 35.4L100.4 28.0M101.6 36.5L102.6 27.0M103.1 36.1L104.3 24.7M104.5 37.1L107.7 26.6M105.2 36.6L107.4 29.4M106.7 37.9L111.4 28.7M107.2 38.4L114.8 28.6M108.7 39.4L115.1 33.7M109.6 40.3L117.5 30.5M110.4 41.2L119.3 32.7M112.2 42.0L119.1 37.1M112.4 43.2L121.8 37.5M112.5 44.2L119.4 39.9M113.6 45.9L121.3 42.8M113.5 47.0L124.4 44.4M114.5 49.2L122.3 47.5" stroke="#03202f" stroke-width=".55" stroke-linecap="round" opacity=".46"/>
+            <circle cx="100" cy="50" r="27" fill="url(#eyeDepth)"/>
+            <circle cx="100" cy="50" r="15.2" fill="none" stroke="#e6d3a6" stroke-width=".6" stroke-dasharray="1.1 .9" opacity=".18"/>
+            <circle cx="100" cy="50" r="26.6" fill="none" stroke="#021722" stroke-width="1.1" opacity=".85"/>
+            <circle cx="100" cy="50" r="27.7" fill="none" stroke="#d9bf88" stroke-width="1" opacity=".8"/>
             <circle class="pupil" cx="100" cy="50" r="10.2" fill="url(#eyePupil)"/>
-            <circle cx="100" cy="50" r="10.2" fill="none" stroke="#04131c" stroke-width=".8"/>
             <ellipse cx="100" cy="40" rx="22" ry="12" fill="url(#eyeGloss)"/>
-            <circle class="spec" cx="106.6" cy="44.2" r="2.3" fill="url(#eyeSpec)"/>
+            <circle class="spec" cx="106.4" cy="44.2" r="3.1" fill="url(#eyeSpec)"/>
             <circle class="spec" cx="93.6" cy="56.4" r=".9" fill="#fff" opacity=".3"/>
+            </g>
           </g>
-          <rect x="10" y="11" width="180" height="78" fill="url(#eyeShade)"/>
+          <rect x="27" y="10" width="146" height="80" fill="url(#eyeShade)" opacity=".8"/>
         </g>
-        <path d="M10 50C53 11 147 11 190 50 147 89 53 89 10 50Z" fill="none" stroke="url(#eyeRim)" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M17 50C57 16.5 143 16.5 183 50 143 83.5 57 83.5 17 50Z" fill="none" stroke="#c4e3ee" stroke-width=".3" opacity=".12"/>
+        <path d="M27 50C63 10 137 10 173 50 137 90 63 90 27 50Z" fill="none" stroke="url(#eyeRimGlow)" stroke-width="3" opacity=".3" filter="url(#eyeGlow)"/>
+        <path d="M27 50C63 10 137 10 173 50 137 90 63 90 27 50Z" fill="none" stroke="url(#eyeRim)" stroke-width="2.1" stroke-linejoin="round"/>
       </g>
     </svg>
+    </div>
     <h1 class="name rise">Nicolas Amzallag</h1>
     <p class="title rise">Business Developer &amp; Partenariats</p>
     <p class="sub rise">Événementiel&nbsp;· Culture<span class="sep-mid">&nbsp;·</span><br class="br-m"> SaaS&nbsp;· IA&nbsp;appliquée</p>
