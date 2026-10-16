@@ -87,6 +87,20 @@ button.row{width:100%;background:none;border:0;font:inherit;color:inherit;text-a
 .cta-btn2{background:rgba(16,26,42,0.55);color:var(--ink);border:1px solid rgba(205,214,228,0.24);}
 .cta-btn2:hover{background:rgba(22,34,54,0.7);border-color:rgba(205,214,228,0.42);transform:translateY(-1px);}
 a:focus-visible,button.row:focus-visible{outline:1px solid var(--ice);outline-offset:3px;border-radius:12px;}
+.snd{position:absolute;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));z-index:10;
+  width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  background:rgba(18,22,30,0.55);border:1px solid var(--line2);color:var(--icon);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);-webkit-tap-highlight-color:transparent;
+  transition:border-color .25s,color .25s,background .25s;}
+.snd:hover{border-color:rgba(222,226,234,0.34);background:rgba(24,29,39,0.7);}
+.snd:focus-visible{outline:1px solid var(--ice);outline-offset:3px;}
+.snd svg{width:18px;height:18px;display:block;}
+.snd .w{opacity:0;transition:opacity .25s;}
+.snd .x{transition:opacity .25s;}
+.snd[aria-pressed="true"]{border-color:rgba(226,212,178,0.42);}
+.snd[aria-pressed="true"] .w{opacity:1;}
+.snd[aria-pressed="true"] .x{opacity:0;}
+@media (min-width:880px){.snd{top:24px;right:24px;}}
 .toast{position:fixed;left:50%;bottom:max(28px,env(safe-area-inset-bottom));z-index:10;transform:translate(-50%,8px);opacity:0;pointer-events:none;
   padding:10px 18px;border-radius:999px;background:rgba(18,22,30,0.94);border:1px solid var(--line2);color:var(--ink);font-size:13px;letter-spacing:0.02em;
   transition:opacity .25s ease,transform .25s ease;}
@@ -302,6 +316,13 @@ a:focus-visible,button.row:focus-visible{outline:1px solid var(--ice);outline-of
     <figure class="qr"><img src="qr.svg" width="45" height="45" alt="QR code — v-card Nicolas Amzallag"></figure>
   </section>
 </main>
+<button type="button" class="snd" id="vcSound" aria-pressed="false" aria-label="Lancer la musique">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4.5 9.5h3l4-3.5v12l-4-3.5h-3z"/>
+    <path class="w" d="M15 9.2a4 4 0 0 1 0 5.6M17.6 6.8a7.4 7.4 0 0 1 0 10.4"/>
+    <path class="x" d="m15.5 10 4 4m0-4-4 4"/>
+  </svg>
+</button>
 <div class="toast" id="vcToast" role="status" aria-live="polite"></div>
 <script>
 /* Email reconstitué au chargement, même logique que le profil digital.
@@ -331,6 +352,32 @@ a:focus-visible,button.row:focus-visible{outline:1px solid var(--ice);outline-of
         navigator.clipboard.writeText(txt).then(function(){show(msg);},function(){if(fallback(txt))show(msg);});
       }else if(fallback(txt)){show(msg);}
     });
+  });
+})();
+
+/* Musique facultative : rien n'est chargé avant le premier clic ; lecture / pause / reprise ; pas de boucle. */
+(function(){
+  var btn=document.getElementById('vcSound'), audio=null;
+  if(!btn)return;
+  function sync(){
+    var on=!!audio&&!audio.paused&&!audio.ended;
+    btn.setAttribute('aria-pressed',on?'true':'false');
+    btn.setAttribute('aria-label',on?'Mettre la musique en pause':'Lancer la musique');
+  }
+  function create(){
+    audio=document.createElement('audio');
+    audio.id='vcAudio';audio.preload='none';audio.loop=false;audio.volume=0.35;
+    audio.src='assets/trip-hop-love.mp3';
+    ['play','playing','pause','ended','error'].forEach(function(e){audio.addEventListener(e,sync);});
+    document.body.appendChild(audio);
+  }
+  btn.addEventListener('click',function(){
+    if(!audio)create();
+    if(audio.error){audio.src='assets/trip-hop-love.mp3';audio.load();}
+    if(audio.paused||audio.ended){
+      var p=audio.play();
+      if(p&&p.catch)p.catch(function(){sync();});
+    }else{audio.pause();}
   });
 })();
 </script>
